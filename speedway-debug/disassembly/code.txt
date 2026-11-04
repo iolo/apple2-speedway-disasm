@@ -1,0 +1,1365 @@
+
+; ----- 0x800 -----
+0800  A9 00     lda #$00
+0802  85 52     sta $52
+0804  85 53     sta $53
+0806  06 52     asl $52
+0808  26 53     rol $53
+080A  26 54     rol $54
+080C  90 0D     bcc $081B
+080E  18        clc 
+080F  A5 52     lda $52
+0811  65 50     adc $50
+0813  85 52     sta $52
+0815  A5 53     lda $53
+0817  65 51     adc $51
+0819  85 53     sta $53
+081B  CA        dex 
+081C  10 E8     bpl $0806
+081E  60        rts 
+
+; ----- 0x820 -----
+0820  A9 01     lda #$01
+0822  85 00     sta $00
+0824  A9 40     lda #$40
+0826  85 03     sta $03
+0828  A9 00     lda #$00
+082A  85 02     sta $02
+082C  85 04     sta $04
+082E  85 50     sta $50
+0830  A9 00     lda #$00
+0832  85 05     sta $05
+0834  A5 00     lda $00
+0836  38        sec 
+0837  E9 10     sbc #$10
+0839  10 07     bpl $0842
+083B  49 FF     eor #$FF
+083D  18        clc 
+083E  69 01     adc #$01
+0840  E6 05     inc $05
+0842  4A        lsr a
+0843  66 50     ror $50
+0845  4A        lsr a
+0846  66 50     ror $50
+0848  4A        lsr a
+0849  66 50     ror $50
+084B  85 51     sta $51
+084D  A5 04     lda $04
+084F  0A        asl a
+0850  0A        asl a
+0851  0A        asl a
+0852  85 54     sta $54
+0854  A2 04     ldx #$04
+0856  20 00 08  jsr $0800
+0859  A9 80     lda #$80
+085B  A6 05     ldx $05
+085D  D0 06     bne $0865
+085F  38        sec 
+0860  E5 53     sbc $53
+0862  4C 68 08  jmp $0868
+0865  18        clc 
+0866  65 53     adc $53
+0868  A4 00     ldy $00
+086A  91 02     sta ($02),y
+086C  E6 04     inc $04
+086E  E6 03     inc $03
+0870  A5 04     lda $04
+0872  C9 14     cmp #$14
+0874  D0 BA     bne $0830
+0876  E6 00     inc $00
+0878  A5 00     lda $00
+087A  C9 40     cmp #$40
+087C  D0 A6     bne $0824
+087E  60        rts 
+
+; ----- 0x880 -----
+0880  A2 40     ldx #$40
+0882  A0 00     ldy #$00
+0884  84 02     sty $02
+0886  86 03     stx $03
+0888  84 04     sty $04
+088A  A5 04     lda $04
+088C  0A        asl a
+088D  0A        asl a
+088E  18        clc 
+088F  69 02     adc #$02
+0891  91 02     sta ($02),y
+0893  E6 03     inc $03
+0895  E6 04     inc $04
+0897  A5 04     lda $04
+0899  C9 14     cmp #$14
+089B  D0 ED     bne $088A
+089D  60        rts 
+
+; ----- 0x8a0 -----
+08A0  A9 80     lda #$80
+08A2  85 50     sta $50
+08A4  4A        lsr a
+08A5  85 03     sta $03
+08A7  A9 50     lda #$50
+08A9  85 02     sta $02
+08AB  A9 00     lda #$00
+08AD  85 51     sta $51
+08AF  85 04     sta $04
+08B1  A0 00     ldy #$00
+08B3  98        tya 
+08B4  0A        asl a
+08B5  0A        asl a
+08B6  0A        asl a
+08B7  0A        asl a
+08B8  85 54     sta $54
+08BA  A2 03     ldx #$03
+08BC  20 00 08  jsr $0800
+08BF  E6 53     inc $53
+08C1  A5 53     lda $53
+08C3  91 02     sta ($02),y
+08C5  C8        iny 
+08C6  C0 0F     cpy #$0F
+08C8  D0 E9     bne $08B3
+08CA  18        clc 
+08CB  A5 50     lda $50
+08CD  69 80     adc #$80
+08CF  85 50     sta $50
+08D1  A5 51     lda $51
+08D3  69 00     adc #$00
+08D5  85 51     sta $51
+08D7  E6 03     inc $03
+08D9  E6 04     inc $04
+08DB  A5 04     lda $04
+08DD  C9 07     cmp #$07
+08DF  D0 D0     bne $08B1
+08E1  60        rts 
+
+; ----- 0x8f0 -----
+08F0  A4 08     ldy $08
+08F2  B1 06     lda ($06),y
+08F4  45 4E     eor $4E
+08F6  45 4F     eor $4F
+08F8  E6 08     inc $08
+08FA  D0 16     bne $0912
+08FC  E6 07     inc $07
+08FE  D0 12     bne $0912
+0900  E6 4E     inc $4E
+0902  D0 02     bne $0906
+0904  E6 4F     inc $4F
+
+; ----- 0x906 -----
+0906  48        pha 
+0907  A9 E0     lda #$E0
+0909  85 07     sta $07
+090B  A9 00     lda #$00
+090D  85 06     sta $06
+090F  85 08     sta $08
+0911  68        pla 
+0912  60        rts 
+
+; ----- 0x920 -----
+0920  A9 CC     lda #$CC
+0922  A2 00     ldx #$00
+0924  9D 00 60  sta $6000,x
+0927  9D 00 61  sta $6100,x
+092A  9D 00 62  sta $6200,x
+092D  9D 00 63  sta $6300,x
+0930  9D 00 64  sta $6400,x
+0933  9D 00 65  sta $6500,x
+0936  9D 00 66  sta $6600,x
+0939  9D 00 67  sta $6700,x
+093C  9D 00 68  sta $6800,x
+093F  9D 00 69  sta $6900,x
+0942  9D 00 6A  sta $6A00,x
+0945  9D 00 6B  sta $6B00,x
+0948  9D 00 6C  sta $6C00,x
+094B  9D 00 6D  sta $6D00,x
+094E  9D 00 6E  sta $6E00,x
+0951  9D 00 6F  sta $6F00,x
+0954  9D 00 70  sta $7000,x
+0957  9D 00 71  sta $7100,x
+095A  9D 00 72  sta $7200,x
+095D  9D 00 73  sta $7300,x
+0960  E8        inx 
+0961  D0 C1     bne $0924
+0963  60        rts 
+
+; ----- 0x970 -----
+0970  A0 02     ldy #$02
+0972  A9 10     lda #$10
+0974  20 A8 FC  jsr $FCA8
+0977  AD 30 C0  lda $C030
+097A  88        dey 
+097B  D0 F5     bne $0972
+097D  60        rts 
+
+; ----- 0x980 -----
+0980  A9 40     lda #$40
+0982  85 03     sta $03
+0984  A9 60     lda #$60
+0986  85 05     sta $05
+0988  A9 00     lda #$00
+098A  85 02     sta $02
+098C  85 04     sta $04
+098E  A0 00     ldy #$00
+0990  B1 02     lda ($02),y
+0992  AA        tax 
+0993  A4 00     ldy $00
+0995  B1 02     lda ($02),y
+0997  A8        tay 
+0998  A9 AA     lda #$AA
+099A  91 04     sta ($04),y
+099C  C8        iny 
+099D  CA        dex 
+099E  D0 FA     bne $099A
+09A0  E6 03     inc $03
+09A2  E6 05     inc $05
+09A4  A5 03     lda $03
+09A6  C9 54     cmp #$54
+09A8  D0 E4     bne $098E
+09AA  60        rts 
+
+; ----- 0x9c0 -----
+09C0  20 F0 08  jsr $08F0
+09C3  29 07     and #$07
+09C5  C9 07     cmp #$07
+09C7  F0 01     beq $09CA
+09C9  60        rts 
+09CA  A9 03     lda #$03
+09CC  60        rts 
+
+; ----- 0x9d0 -----
+09D0  20 F0 08  jsr $08F0
+09D3  29 03     and #$03
+09D5  60        rts 
+
+; ----- 0x9e0 -----
+09E0  A5 60     lda $60
+09E2  D0 18     bne $09FC
+09E4  20 D0 09  jsr $09D0
+09E7  D0 46     bne $0A2F
+09E9  20 C0 09  jsr $09C0
+09EC  09 40     ora #$40
+09EE  85 62     sta $62
+09F0  A9 50     lda #$50
+09F2  85 61     sta $61
+09F4  A9 00     lda #$00
+09F6  85 63     sta $63
+09F8  85 64     sta $64
+09FA  E6 60     inc $60
+09FC  A5 64     lda $64
+09FE  F0 06     beq $0A06
+0A00  C6 64     dec $64
+0A02  E6 63     inc $63
+0A04  D0 02     bne $0A08
+0A06  E6 64     inc $64
+0A08  A5 63     lda $63
+0A0A  C9 40     cmp #$40
+0A0C  85 68     sta $68
+0A0E  A5 63     lda $63
+0A10  09 60     ora #$60
+0A12  85 66     sta $66
+0A14  A9 00     lda #$00
+0A16  85 65     sta $65
+0A18  85 67     sta $67
+0A1A  18        clc 
+0A1B  A4 00     ldy $00
+0A1D  B1 67     lda ($67),y
+0A1F  A4 63     ldy $63
+0A21  71 61     adc ($61),y
+0A23  85 02     sta $02
+0A25  A5 63     lda $63
+0A27  C9 0F     cmp #$0F
+0A29  30 05     bmi $0A30
+0A2B  A9 00     lda #$00
+0A2D  85 60     sta $60
+0A2F  60        rts 
+0A30  C9 0A     cmp #$0A
+0A32  10 67     bpl $0A9B
+0A34  C9 06     cmp #$06
+0A36  10 2F     bpl $0A67
+0A38  C9 03     cmp #$03
+0A3A  10 0A     bpl $0A46
+0A3C  A4 02     ldy $02
+0A3E  A9 66     lda #$66
+0A40  91 65     sta ($65),y
+0A42  C8        iny 
+0A43  91 65     sta ($65),y
+0A45  60        rts 
+0A46  C6 02     dec $02
+0A48  A4 02     ldy $02
+0A4A  A9 66     lda #$66
+0A4C  91 65     sta ($65),y
+0A4E  C8        iny 
+0A4F  91 65     sta ($65),y
+0A51  C8        iny 
+0A52  91 65     sta ($65),y
+0A54  E6 66     inc $66
+0A56  A4 02     ldy $02
+0A58  A9 00     lda #$00
+0A5A  91 65     sta ($65),y
+0A5C  C8        iny 
+0A5D  A9 11     lda #$11
+0A5F  91 65     sta ($65),y
+0A61  C8        iny 
+0A62  A9 00     lda #$00
+0A64  91 65     sta ($65),y
+0A66  60        rts 
+0A67  C6 02     dec $02
+0A69  C6 02     dec $02
+0A6B  C6 02     dec $02
+0A6D  A5 00     lda $00
+0A6F  C9 10     cmp #$10
+0A71  30 0C     bmi $0A7F
+0A73  C9 31     cmp #$31
+0A75  10 04     bpl $0A7B
+0A77  A2 00     ldx #$00
+0A79  F0 06     beq $0A81
+0A7B  A2 20     ldx #$20
+0A7D  D0 02     bne $0A81
+0A7F  A2 40     ldx #$40
+0A81  A9 04     lda #$04
+0A83  85 03     sta $03
+0A85  A4 02     ldy $02
+0A87  BD D0 0A  lda $0AD0,x
+0A8A  E8        inx 
+0A8B  C9 FF     cmp #$FF
+0A8D  F0 05     beq $0A94
+0A8F  91 65     sta ($65),y
+0A91  C8        iny 
+0A92  D0 F3     bne $0A87
+0A94  E6 66     inc $66
+0A96  C6 03     dec $03
+0A98  D0 EB     bne $0A85
+0A9A  60        rts 
+0A9B  38        sec 
+0A9C  A5 02     lda $02
+0A9E  E9 04     sbc #$04
+0AA0  85 02     sta $02
+0AA2  A5 00     lda $00
+0AA4  C9 10     cmp #$10
+0AA6  30 0C     bmi $0AB4
+0AA8  C9 31     cmp #$31
+0AAA  10 04     bpl $0AB0
+0AAC  A2 00     ldx #$00
+0AAE  F0 06     beq $0AB6
+0AB0  A2 42     ldx #$42
+0AB2  D0 02     bne $0AB6
+0AB4  A2 84     ldx #$84
+0AB6  A9 06     lda #$06
+0AB8  85 03     sta $03
+0ABA  A4 02     ldy $02
+0ABC  BD 30 0B  lda $0B30,x
+0ABF  E8        inx 
+0AC0  C9 FF     cmp #$FF
+0AC2  F0 05     beq $0AC9
+0AC4  91 65     sta ($65),y
+0AC6  C8        iny 
+0AC7  D0 F3     bne $0ABC
+0AC9  E6 66     inc $66
+0ACB  C6 03     dec $03
+0ACD  D0 EB     bne $0ABA
+0ACF  60        rts 
+
+; ----- 0xc00 -----
+0C00  A5 70     lda $70
+0C02  D0 0B     bne $0C0F
+0C04  20 D0 09  jsr $09D0
+0C07  D0 2C     bne $0C35
+0C09  A9 FF     lda #$FF
+0C0B  85 70     sta $70
+0C0D  85 71     sta $71
+0C0F  E6 71     inc $71
+0C11  A5 71     lda $71
+0C13  09 60     ora #$60
+0C15  85 73     sta $73
+0C17  A5 71     lda $71
+0C19  09 40     ora #$40
+0C1B  85 75     sta $75
+0C1D  A9 00     lda #$00
+0C1F  85 72     sta $72
+0C21  85 74     sta $74
+0C23  A4 00     ldy $00
+0C25  B1 74     lda ($74),y
+0C27  85 02     sta $02
+0C29  C6 02     dec $02
+0C2B  A5 71     lda $71
+0C2D  C9 14     cmp #$14
+0C2F  30 05     bmi $0C36
+0C31  A9 00     lda #$00
+0C33  85 70     sta $70
+0C35  60        rts 
+0C36  C9 0F     cmp #$0F
+0C38  10 2D     bpl $0C67
+0C3A  C9 0A     cmp #$0A
+0C3C  10 25     bpl $0C63
+0C3E  C9 06     cmp #$06
+0C40  10 1D     bpl $0C5F
+0C42  C9 03     cmp #$03
+0C44  10 07     bpl $0C4D
+0C46  A4 02     ldy $02
+0C48  A9 FF     lda #$FF
+0C4A  91 72     sta ($72),y
+0C4C  60        rts 
+0C4D  A4 02     ldy $02
+0C4F  88        dey 
+0C50  A9 FF     lda #$FF
+0C52  91 72     sta ($72),y
+0C54  88        dey 
+0C55  91 72     sta ($72),y
+0C57  C6 73     dec $73
+0C59  91 72     sta ($72),y
+0C5B  C8        iny 
+0C5C  91 72     sta ($72),y
+0C5E  60        rts 
+0C5F  A9 04     lda #$04
+0C61  D0 06     bne $0C69
+0C63  A9 06     lda #$06
+0C65  D0 02     bne $0C69
+0C67  A9 08     lda #$08
+0C69  85 03     sta $03
+0C6B  85 04     sta $04
+0C6D  C6 02     dec $02
+0C6F  A9 FF     lda #$FF
+0C71  A6 04     ldx $04
+0C73  A4 02     ldy $02
+0C75  91 72     sta ($72),y
+0C77  88        dey 
+0C78  CA        dex 
+0C79  D0 FA     bne $0C75
+0C7B  C6 73     dec $73
+0C7D  C6 03     dec $03
+0C7F  D0 F0     bne $0C71
+0C81  60        rts 
+
+; ----- 0xc90 -----
+0C90  A5 80     lda $80
+0C92  D0 0B     bne $0C9F
+0C94  20 D0 09  jsr $09D0
+0C97  D0 2D     bne $0CC6
+0C99  A9 FF     lda #$FF
+0C9B  85 80     sta $80
+0C9D  85 81     sta $81
+0C9F  E6 81     inc $81
+0CA1  A5 81     lda $81
+0CA3  09 60     ora #$60
+0CA5  85 83     sta $83
+0CA7  A5 81     lda $81
+0CA9  09 40     ora #$40
+0CAB  85 85     sta $85
+0CAD  A0 00     ldy #$00
+0CAF  84 82     sty $82
+0CB1  84 84     sty $84
+0CB3  B1 84     lda ($84),y
+0CB5  18        clc 
+0CB6  A4 00     ldy $00
+0CB8  71 84     adc ($84),y
+0CBA  85 02     sta $02
+0CBC  A5 81     lda $81
+0CBE  C9 14     cmp #$14
+0CC0  30 05     bmi $0CC7
+0CC2  A9 00     lda #$00
+0CC4  85 80     sta $80
+0CC6  60        rts 
+0CC7  C9 0F     cmp #$0F
+0CC9  10 2D     bpl $0CF8
+0CCB  C9 0A     cmp #$0A
+0CCD  10 25     bpl $0CF4
+0CCF  C9 06     cmp #$06
+0CD1  10 1D     bpl $0CF0
+0CD3  C9 03     cmp #$03
+0CD5  10 07     bpl $0CDE
+0CD7  A4 02     ldy $02
+0CD9  A9 FF     lda #$FF
+0CDB  91 82     sta ($82),y
+0CDD  60        rts 
+0CDE  A4 02     ldy $02
+0CE0  C8        iny 
+0CE1  A9 FF     lda #$FF
+0CE3  91 82     sta ($82),y
+0CE5  C8        iny 
+0CE6  91 82     sta ($82),y
+0CE8  C6 83     dec $83
+0CEA  91 82     sta ($82),y
+0CEC  88        dey 
+0CED  91 82     sta ($82),y
+0CEF  60        rts 
+0CF0  A9 04     lda #$04
+0CF2  D0 06     bne $0CFA
+0CF4  A9 06     lda #$06
+0CF6  D0 02     bne $0CFA
+0CF8  A9 08     lda #$08
+0CFA  85 03     sta $03
+0CFC  85 04     sta $04
+0CFE  E6 02     inc $02
+0D00  A9 FF     lda #$FF
+0D02  A6 04     ldx $04
+0D04  A4 02     ldy $02
+0D06  91 82     sta ($82),y
+0D08  C8        iny 
+0D09  CA        dex 
+0D0A  D0 FA     bne $0D06
+0D0C  C6 83     dec $83
+0D0E  C6 03     dec $03
+0D10  D0 F0     bne $0D02
+0D12  60        rts 
+
+; ----- 0xd20 -----
+0D20  A5 90     lda $90
+0D22  D0 18     bne $0D3C
+0D24  20 D0 09  jsr $09D0
+0D27  D0 46     bne $0D6F
+0D29  20 C0 09  jsr $09C0
+0D2C  09 40     ora #$40
+0D2E  85 92     sta $92
+0D30  A9 50     lda #$50
+0D32  85 91     sta $91
+0D34  A9 00     lda #$00
+0D36  85 93     sta $93
+0D38  85 94     sta $94
+0D3A  E6 90     inc $90
+0D3C  A5 94     lda $94
+0D3E  F0 06     beq $0D46
+0D40  C6 94     dec $94
+0D42  E6 93     inc $93
+0D44  D0 02     bne $0D48
+0D46  E6 94     inc $94
+0D48  A5 93     lda $93
+0D4A  09 40     ora #$40
+0D4C  85 98     sta $98
+0D4E  A5 93     lda $93
+0D50  09 60     ora #$60
+0D52  85 96     sta $96
+0D54  A9 00     lda #$00
+0D56  85 95     sta $95
+0D58  85 97     sta $97
+0D5A  18        clc 
+0D5B  A4 00     ldy $00
+0D5D  B1 97     lda ($97),y
+0D5F  A4 93     ldy $93
+0D61  71 91     adc ($91),y
+0D63  85 02     sta $02
+0D65  A5 93     lda $93
+0D67  C9 0F     cmp #$0F
+0D69  30 05     bmi $0D70
+0D6B  A9 00     lda #$00
+0D6D  85 90     sta $90
+0D6F  60        rts 
+0D70  C9 0A     cmp #$0A
+0D72  10 67     bpl $0DDB
+0D74  C9 06     cmp #$06
+0D76  10 2F     bpl $0DA7
+0D78  C9 03     cmp #$03
+0D7A  10 0A     bpl $0D86
+0D7C  A4 02     ldy $02
+0D7E  A9 66     lda #$66
+0D80  91 95     sta ($95),y
+0D82  C8        iny 
+0D83  91 95     sta ($95),y
+0D85  60        rts 
+0D86  C6 02     dec $02
+0D88  A4 02     ldy $02
+0D8A  A9 66     lda #$66
+0D8C  91 95     sta ($95),y
+0D8E  C8        iny 
+0D8F  91 95     sta ($95),y
+0D91  C8        iny 
+0D92  91 95     sta ($95),y
+0D94  E6 96     inc $96
+0D96  A4 02     ldy $02
+0D98  A9 00     lda #$00
+0D9A  91 95     sta ($95),y
+0D9C  C8        iny 
+0D9D  A9 11     lda #$11
+0D9F  91 95     sta ($95),y
+0DA1  C8        iny 
+0DA2  A9 00     lda #$00
+0DA4  91 95     sta ($95),y
+0DA6  60        rts 
+0DA7  C6 02     dec $02
+0DA9  C6 02     dec $02
+0DAB  C6 02     dec $02
+0DAD  A5 00     lda $00
+0DAF  C9 10     cmp #$10
+0DB1  30 0C     bmi $0DBF
+0DB3  C9 31     cmp #$31
+0DB5  10 04     bpl $0DBB
+0DB7  A2 00     ldx #$00
+0DB9  F0 06     beq $0DC1
+0DBB  A2 20     ldx #$20
+0DBD  D0 02     bne $0DC1
+0DBF  A2 40     ldx #$40
+0DC1  A9 04     lda #$04
+0DC3  85 03     sta $03
+0DC5  A4 02     ldy $02
+0DC7  BD D0 0A  lda $0AD0,x
+0DCA  E8        inx 
+0DCB  C9 FF     cmp #$FF
+0DCD  F0 05     beq $0DD4
+0DCF  91 95     sta ($95),y
+0DD1  C8        iny 
+0DD2  D0 F3     bne $0DC7
+0DD4  E6 96     inc $96
+0DD6  C6 03     dec $03
+0DD8  D0 EB     bne $0DC5
+0DDA  60        rts 
+0DDB  38        sec 
+0DDC  A5 02     lda $02
+0DDE  E9 04     sbc #$04
+0DE0  85 02     sta $02
+0DE2  A5 00     lda $00
+0DE4  C9 10     cmp #$10
+0DE6  30 0C     bmi $0DF4
+0DE8  C9 31     cmp #$31
+0DEA  10 04     bpl $0DF0
+0DEC  A2 00     ldx #$00
+0DEE  F0 06     beq $0DF6
+0DF0  A2 42     ldx #$42
+0DF2  D0 02     bne $0DF6
+0DF4  A2 84     ldx #$84
+0DF6  A9 06     lda #$06
+0DF8  85 03     sta $03
+0DFA  A4 02     ldy $02
+0DFC  BD 30 0B  lda $0B30,x
+0DFF  E8        inx 
+0E00  C9 FF     cmp #$FF
+0E02  F0 05     beq $0E09
+0E04  91 95     sta ($95),y
+0E06  C8        iny 
+0E07  D0 F3     bne $0DFC
+0E09  E6 96     inc $96
+0E0B  C6 03     dec $03
+0E0D  D0 EB     bne $0DFA
+0E0F  60        rts 
+
+; ----- 0xe10 -----
+0E10  A5 63     lda $63
+0E12  C5 93     cmp $93
+0E14  30 06     bmi $0E1C
+0E16  20 20 0D  jsr $0D20
+0E19  4C E0 09  jmp $09E0
+0E1C  20 E0 09  jsr $09E0
+0E1F  4C 20 0D  jmp $0D20
+
+; ----- 0xe30 -----
+0E30  A5 01     lda $01
+0E32  18        clc 
+0E33  69 94     adc #$94
+0E35  A8        tay 
+0E36  A2 27     ldx #$27
+0E38  B9 00 60  lda $6000,y
+0E3B  29 0F     and #$0F
+0E3D  85 02     sta $02
+0E3F  B9 00 61  lda $6100,y
+0E42  29 F0     and #$F0
+0E44  05 02     ora $02
+0E46  9D 28 05  sta $0528,x
+0E49  B9 00 62  lda $6200,y
+0E4C  29 0F     and #$0F
+0E4E  85 02     sta $02
+0E50  B9 00 63  lda $6300,y
+0E53  29 F0     and #$F0
+0E55  05 02     ora $02
+0E57  9D A8 05  sta $05A8,x
+0E5A  B9 00 64  lda $6400,y
+0E5D  29 0F     and #$0F
+0E5F  85 02     sta $02
+0E61  B9 00 65  lda $6500,y
+0E64  29 F0     and #$F0
+0E66  05 02     ora $02
+0E68  9D 28 06  sta $0628,x
+0E6B  B9 00 66  lda $6600,y
+0E6E  29 0F     and #$0F
+0E70  85 02     sta $02
+0E72  B9 00 67  lda $6700,y
+0E75  29 F0     and #$F0
+0E77  05 02     ora $02
+0E79  9D A8 06  sta $06A8,x
+0E7C  B9 00 68  lda $6800,y
+0E7F  29 0F     and #$0F
+0E81  85 02     sta $02
+0E83  B9 00 69  lda $6900,y
+0E86  29 F0     and #$F0
+0E88  05 02     ora $02
+0E8A  9D 28 07  sta $0728,x
+0E8D  B9 00 6A  lda $6A00,y
+0E90  29 0F     and #$0F
+0E92  85 02     sta $02
+0E94  B9 00 6B  lda $6B00,y
+0E97  29 F0     and #$F0
+0E99  05 02     ora $02
+0E9B  9D A8 07  sta $07A8,x
+0E9E  B9 00 6C  lda $6C00,y
+0EA1  29 0F     and #$0F
+0EA3  85 02     sta $02
+0EA5  B9 00 6D  lda $6D00,y
+0EA8  29 F0     and #$F0
+0EAA  05 02     ora $02
+0EAC  9D 50 04  sta $0450,x
+0EAF  B9 00 6E  lda $6E00,y
+0EB2  29 0F     and #$0F
+0EB4  85 02     sta $02
+0EB6  B9 00 6F  lda $6F00,y
+0EB9  29 F0     and #$F0
+0EBB  05 02     ora $02
+0EBD  9D D0 04  sta $04D0,x
+0EC0  B9 00 70  lda $7000,y
+0EC3  29 0F     and #$0F
+0EC5  85 02     sta $02
+0EC7  B9 00 71  lda $7100,y
+0ECA  29 F0     and #$F0
+0ECC  05 02     ora $02
+0ECE  9D 50 05  sta $0550,x
+0ED1  B9 00 72  lda $7200,y
+0ED4  29 0F     and #$0F
+0ED6  85 02     sta $02
+0ED8  B9 00 73  lda $7300,y
+0EDB  29 F0     and #$F0
+0EDD  05 02     ora $02
+0EDF  9D D0 05  sta $05D0,x
+0EE2  88        dey 
+0EE3  CA        dex 
+0EE4  30 03     bmi $0EE9
+0EE6  4C 38 0E  jmp $0E38
+0EE9  60        rts 
+
+; ----- 0xef0 -----
+0EF0  A4 09     ldy $09
+0EF2  A2 27     ldx #$27
+0EF4  B9 00 10  lda $1000,y
+0EF7  9D 00 04  sta $0400,x
+0EFA  B9 00 11  lda $1100,y
+0EFD  9D 80 04  sta $0480,x
+0F00  B9 00 12  lda $1200,y
+0F03  9D 00 05  sta $0500,x
+0F06  B9 00 13  lda $1300,y
+0F09  9D 80 05  sta $0580,x
+0F0C  B9 00 14  lda $1400,y
+0F0F  9D 00 06  sta $0600,x
+0F12  B9 00 15  lda $1500,y
+0F15  9D 80 06  sta $0680,x
+0F18  B9 00 16  lda $1600,y
+0F1B  9D 00 07  sta $0700,x
+0F1E  B9 00 17  lda $1700,y
+0F21  9D 80 07  sta $0780,x
+0F24  B9 00 18  lda $1800,y
+0F27  9D 28 04  sta $0428,x
+0F2A  B9 00 19  lda $1900,y
+0F2D  9D A8 04  sta $04A8,x
+0F30  88        dey 
+0F31  CA        dex 
+0F32  10 C0     bpl $0EF4
+0F34  60        rts 
+
+; ----- 0xf40 -----
+0F40  A5 0A     lda $0A
+0F42  F0 03     beq $0F47
+0F44  C6 0A     dec $0A
+0F46  60        rts 
+0F47  A5 0B     lda $0B
+0F49  F0 09     beq $0F54
+0F4B  A9 00     lda #$00
+0F4D  85 0B     sta $0B
+0F4F  A5 0C     lda $0C
+0F51  85 0A     sta $0A
+0F53  60        rts 
+0F54  20 F0 08  jsr $08F0
+0F57  F0 FB     beq $0F54
+0F59  85 0B     sta $0B
+0F5B  A5 0D     lda $0D
+0F5D  85 0A     sta $0A
+0F5F  60        rts 
+0F60  A2 00     ldx #$00
+0F62  20 1E FB  jsr $FB1E
+0F65  98        tya 
+0F66  4A        lsr a
+0F67  4A        lsr a
+0F68  4A        lsr a
+0F69  4A        lsr a
+0F6A  C9 03     cmp #$03
+0F6C  30 0E     bmi $0F7C
+0F6E  C9 05     cmp #$05
+0F70  10 01     bpl $0F73
+0F72  60        rts 
+0F73  A5 00     lda $00
+0F75  C9 35     cmp #$35
+0F77  10 02     bpl $0F7B
+0F79  E6 00     inc $00
+0F7B  60        rts 
+0F7C  A5 00     lda $00
+0F7E  C9 0C     cmp #$0C
+0F80  30 02     bmi $0F84
+0F82  C6 00     dec $00
+0F84  60        rts 
+
+; ----- 0xf90 -----
+0F90  A2 00     ldx #$00
+0F92  20 1E FB  jsr $FB1E
+0F95  98        tya 
+0F96  4A        lsr a
+0F97  4A        lsr a
+0F98  4A        lsr a
+0F99  4A        lsr a
+0F9A  C9 03     cmp #$03
+0F9C  30 05     bmi $0FA3
+0F9E  C9 05     cmp #$05
+0FA0  10 15     bpl $0FB7
+0FA2  60        rts 
+0FA3  A4 01     ldy $01
+0FA5  10 01     bpl $0FA8
+0FA7  60        rts 
+0FA8  C6 01     dec $01
+0FAA  C9 01     cmp #$01
+0FAC  30 01     bmi $0FAF
+0FAE  60        rts 
+0FAF  A4 01     ldy $01
+0FB1  10 01     bpl $0FB4
+0FB3  60        rts 
+0FB4  C6 01     dec $01
+0FB6  60        rts 
+0FB7  A4 01     ldy $01
+0FB9  30 01     bmi $0FBC
+0FBB  60        rts 
+0FBC  E6 01     inc $01
+0FBE  C9 07     cmp #$07
+0FC0  10 01     bpl $0FC3
+0FC2  60        rts 
+0FC3  A4 01     ldy $01
+0FC5  30 01     bmi $0FC8
+0FC7  60        rts 
+0FC8  E6 01     inc $01
+0FCA  60        rts 
+
+; ----- 0xfd0 -----
+0FD0  A2 07     ldx #$07
+0FD2  BD 5D 07  lda $075D,x
+0FD5  18        clc 
+0FD6  69 01     adc #$01
+0FD8  C9 BA     cmp #$BA
+0FDA  30 08     bmi $0FE4
+0FDC  A9 B0     lda #$B0
+0FDE  9D 5D 07  sta $075D,x
+0FE1  CA        dex 
+0FE2  10 EE     bpl $0FD2
+0FE4  9D 5D 07  sta $075D,x
+0FE7  60        rts 
+
+; ----- 0x1a00 -----
+1A00  A5 0B     lda $0B
+1A02  F0 44     beq $1A48
+1A04  30 21     bmi $1A27
+1A06  A5 00     lda $00
+1A08  C9 34     cmp #$34
+1A0A  10 0C     bpl $1A18
+1A0C  E6 00     inc $00
+1A0E  C6 09     dec $09
+1A10  A9 A0     lda #$A0
+1A12  C5 01     cmp $01
+1A14  10 02     bpl $1A18
+1A16  C6 01     dec $01
+1A18  E6 09     inc $09
+1A1A  E6 09     inc $09
+1A1C  A9 A0     lda #$A0
+1A1E  C5 01     cmp $01
+1A20  10 02     bpl $1A24
+1A22  C6 01     dec $01
+1A24  4C 90 0F  jmp $0F90
+1A27  A5 00     lda $00
+1A29  C9 0B     cmp #$0B
+1A2B  30 0C     bmi $1A39
+1A2D  C6 00     dec $00
+1A2F  E6 09     inc $09
+1A31  A9 61     lda #$61
+1A33  C5 01     cmp $01
+1A35  30 02     bmi $1A39
+1A37  E6 01     inc $01
+1A39  C6 09     dec $09
+1A3B  C6 09     dec $09
+1A3D  A9 61     lda #$61
+1A3F  C5 01     cmp $01
+1A41  30 02     bmi $1A45
+1A43  E6 01     inc $01
+1A45  4C 90 0F  jmp $0F90
+1A48  A5 01     lda $01
+1A4A  F0 06     beq $1A52
+1A4C  30 07     bmi $1A55
+1A4E  C6 01     dec $01
+1A50  C6 09     dec $09
+1A52  4C 60 0F  jmp $0F60
+1A55  E6 01     inc $01
+1A57  E6 09     inc $09
+1A59  4C 60 0F  jmp $0F60
+
+; ----- 0x1a60 -----
+1A60  A5 01     lda $01
+1A62  F0 06     beq $1A6A
+1A64  10 08     bpl $1A6E
+1A66  A2 0A     ldx #$0A
+1A68  D0 06     bne $1A70
+1A6A  A2 00     ldx #$00
+1A6C  F0 02     beq $1A70
+1A6E  A2 14     ldx #$14
+1A70  A9 7C     lda #$7C
+1A72  18        clc 
+1A73  65 01     adc $01
+1A75  A8        tay 
+1A76  A9 0A     lda #$0A
+1A78  85 02     sta $02
+1A7A  BD C0 1A  lda $1AC0,x
+1A7D  F0 03     beq $1A82
+1A7F  99 00 6E  sta $6E00,y
+1A82  BD DE 1A  lda $1ADE,x
+1A85  F0 03     beq $1A8A
+1A87  99 00 6F  sta $6F00,y
+1A8A  BD FC 1A  lda $1AFC,x
+1A8D  F0 03     beq $1A92
+1A8F  99 00 70  sta $7000,y
+1A92  BD 1A 1B  lda $1B1A,x
+1A95  F0 03     beq $1A9A
+1A97  99 00 71  sta $7100,y
+1A9A  BD 38 1B  lda $1B38,x
+1A9D  F0 03     beq $1AA2
+1A9F  99 00 72  sta $7200,y
+1AA2  BD 56 1B  lda $1B56,x
+1AA5  F0 03     beq $1AAA
+1AA7  99 00 73  sta $7300,y
+1AAA  E8        inx 
+1AAB  C8        iny 
+1AAC  C6 02     dec $02
+1AAE  D0 CA     bne $1A7A
+1AB0  60        rts 
+
+; ----- 0x1b80 -----
+1B80  A9 00     lda #$00
+1B82  A6 01     ldx $01
+1B84  F0 5E     beq $1BE4
+1B86  10 2E     bpl $1BB6
+1B88  8D 5F 05  sta $055F
+1B8B  8D 60 05  sta $0560
+1B8E  8D DF 05  sta $05DF
+1B91  8D E0 05  sta $05E0
+1B94  8D 64 05  sta $0564
+1B97  8D 65 05  sta $0565
+1B9A  8D E4 05  sta $05E4
+1B9D  8D E5 05  sta $05E5
+1BA0  8D E6 05  sta $05E6
+1BA3  8D E8 05  sta $05E8
+1BA6  A9 80     lda #$80
+1BA8  8D 61 05  sta $0561
+1BAB  A9 02     lda #$02
+1BAD  8D E1 05  sta $05E1
+1BB0  A9 09     lda #$09
+1BB2  8D 66 05  sta $0566
+1BB5  60        rts 
+1BB6  8D 62 05  sta $0562
+1BB9  8D 63 05  sta $0563
+1BBC  8D E2 05  sta $05E2
+1BBF  8D E3 05  sta $05E3
+1BC2  8D 67 05  sta $0567
+1BC5  8D 68 05  sta $0568
+1BC8  8D E7 05  sta $05E7
+1BCB  8D E8 05  sta $05E8
+1BCE  8D E1 05  sta $05E1
+1BD1  8D DF 05  sta $05DF
+1BD4  A9 80     lda #$80
+1BD6  8D 66 05  sta $0566
+1BD9  A9 02     lda #$02
+1BDB  8D E6 05  sta $05E6
+1BDE  A9 09     lda #$09
+1BE0  8D 61 05  sta $0561
+1BE3  60        rts 
+1BE4  A2 02     ldx #$02
+1BE6  9D 5F 05  sta $055F,x
+1BE9  9D DF 05  sta $05DF,x
+1BEC  9D 66 05  sta $0566,x
+1BEF  9D E6 05  sta $05E6,x
+1BF2  CA        dex 
+1BF3  10 F1     bpl $1BE6
+1BF5  60        rts 
+
+; ----- 0x1c00 -----
+1C00  A2 07     ldx #$07
+1C02  BD 5D 07  lda $075D,x
+1C05  38        sec 
+1C06  E9 01     sbc #$01
+1C08  C9 B0     cmp #$B0
+1C0A  10 08     bpl $1C14
+1C0C  A9 B9     lda #$B9
+1C0E  9D 5D 07  sta $075D,x
+1C11  CA        dex 
+1C12  10 EE     bpl $1C02
+1C14  9D 5D 07  sta $075D,x
+1C17  60        rts 
+
+; ----- 0x1c20 -----
+1C20  AD 61 C0  lda $C061
+1C23  30 07     bmi $1C2C
+1C25  A5 0F     lda $0F
+1C27  30 02     bmi $1C2B
+1C29  E6 0F     inc $0F
+1C2B  60        rts 
+1C2C  A5 10     lda $10
+1C2E  D0 FB     bne $1C2B
+1C30  A5 0E     lda $0E
+1C32  D0 1C     bne $1C50
+1C34  A5 60     lda $60
+1C36  F0 08     beq $1C40
+1C38  C6 63     dec $63
+1C3A  D0 04     bne $1C40
+1C3C  A9 00     lda #$00
+1C3E  85 60     sta $60
+1C40  A5 90     lda $90
+1C42  F0 08     beq $1C4C
+1C44  C6 93     dec $93
+1C46  D0 04     bne $1C4C
+1C48  A9 00     lda #$00
+1C4A  85 90     sta $90
+1C4C  A9 04     lda #$04
+1C4E  85 0E     sta $0E
+1C50  C6 0E     dec $0E
+1C52  C6 0F     dec $0F
+1C54  F0 10     beq $1C66
+1C56  A0 1A     ldy #$1A
+1C58  A9 05     lda #$05
+1C5A  20 A8 FC  jsr $FCA8
+1C5D  AD 30 C0  lda $C030
+1C60  88        dey 
+1C61  D0 F5     bne $1C58
+1C63  4C 00 1C  jmp $1C00
+1C66  E6 10     inc $10
+1C68  60        rts 
+
+; ----- 0x1c70 -----
+1C70  A5 01     lda $01
+1C72  F0 08     beq $1C7C
+1C74  10 0C     bpl $1C82
+1C76  A9 7E     lda #$7E
+1C78  A2 08     ldx #$08
+1C7A  D0 0A     bne $1C86
+1C7C  A9 7C     lda #$7C
+1C7E  A2 0A     ldx #$0A
+1C80  D0 04     bne $1C86
+1C82  A9 7C     lda #$7C
+1C84  A2 08     ldx #$08
+1C86  18        clc 
+1C87  65 01     adc $01
+1C89  A8        tay 
+1C8A  B9 00 72  lda $7200,y
+1C8D  C9 AA     cmp #$AA
+1C8F  F0 07     beq $1C98
+1C91  C9 CC     cmp #$CC
+1C93  F0 03     beq $1C98
+1C95  4C 70 1D  jmp $1D70
+1C98  B9 00 73  lda $7300,y
+1C9B  C9 AA     cmp #$AA
+1C9D  F0 07     beq $1CA6
+1C9F  C9 CC     cmp #$CC
+1CA1  F0 03     beq $1CA6
+1CA3  4C 70 1D  jmp $1D70
+1CA6  C8        iny 
+1CA7  CA        dex 
+1CA8  D0 E0     bne $1C8A
+1CAA  60        rts 
+
+; ----- 0x1d30 -----
+1D30  A2 0F     ldx #$0F
+1D32  BD B0 1C  lda $1CB0,x
+1D35  9D 5C 04  sta $045C,x
+1D38  BD C0 1C  lda $1CC0,x
+1D3B  9D DC 04  sta $04DC,x
+1D3E  BD D0 1C  lda $1CD0,x
+1D41  9D 5C 05  sta $055C,x
+1D44  BD E0 1C  lda $1CE0,x
+1D47  9D DC 05  sta $05DC,x
+1D4A  CA        dex 
+1D4B  10 E5     bpl $1D32
+1D4D  60        rts 
+
+; ----- 0x1d50 -----
+1D50  A2 0F     ldx #$0F
+1D52  BD F0 1C  lda $1CF0,x
+1D55  9D 5C 04  sta $045C,x
+1D58  BD 00 1D  lda $1D00,x
+1D5B  9D DC 04  sta $04DC,x
+1D5E  BD 10 1D  lda $1D10,x
+1D61  9D 5C 05  sta $055C,x
+1D64  BD 20 1D  lda $1D20,x
+1D67  9D DC 05  sta $05DC,x
+1D6A  CA        dex 
+1D6B  10 E5     bpl $1D52
+1D6D  60        rts 
+
+; ----- 0x1d70 -----
+1D70  68        pla 
+1D71  68        pla 
+1D72  20 20 09  jsr $0920
+1D75  20 80 09  jsr $0980
+1D78  20 10 0E  jsr $0E10
+1D7B  20 00 0C  jsr $0C00
+1D7E  20 90 0C  jsr $0C90
+1D81  20 60 1A  jsr $1A60
+1D84  20 80 1B  jsr $1B80
+1D87  A9 30     lda #$30
+1D89  85 02     sta $02
+1D8B  20 30 1D  jsr $1D30
+1D8E  A9 60     lda #$60
+1D90  20 A8 FC  jsr $FCA8
+1D93  20 70 09  jsr $0970
+1D96  20 50 1D  jsr $1D50
+1D99  A9 60     lda #$60
+1D9B  20 A8 FC  jsr $FCA8
+1D9E  20 70 09  jsr $0970
+1DA1  C6 02     dec $02
+1DA3  D0 E6     bne $1D8B
+1DA5  20 20 09  jsr $0920
+1DA8  20 80 09  jsr $0980
+1DAB  20 30 0E  jsr $0E30
+1DAE  A9 0A     lda #$0A
+1DB0  85 02     sta $02
+1DB2  A9 FF     lda #$FF
+1DB4  20 A8 FC  jsr $FCA8
+1DB7  C6 02     dec $02
+1DB9  D0 F7     bne $1DB2
+1DBB  4C C0 1D  jmp $1DC0
+
+; ----- 0x1dc0 -----
+1DC0  CE 6E 07  dec $076E
+1DC3  AD 6E 07  lda $076E
+1DC6  C9 B0     cmp #$B0
+1DC8  30 46     bmi $1E10
+1DCA  A9 00     lda #$00
+1DCC  85 60     sta $60
+1DCE  85 70     sta $70
+1DD0  85 80     sta $80
+1DD2  85 90     sta $90
+1DD4  20 20 09  jsr $0920
+1DD7  20 40 0F  jsr $0F40
+1DDA  20 00 1A  jsr $1A00
+1DDD  20 80 09  jsr $0980
+1DE0  20 20 1C  jsr $1C20
+1DE3  20 10 0E  jsr $0E10
+1DE6  20 00 0C  jsr $0C00
+1DE9  20 90 0C  jsr $0C90
+1DEC  20 70 1C  jsr $1C70
+1DEF  20 60 1A  jsr $1A60
+1DF2  20 30 0E  jsr $0E30
+1DF5  20 F0 0E  jsr $0EF0
+1DF8  20 80 1B  jsr $1B80
+1DFB  20 70 09  jsr $0970
+1DFE  20 D0 0F  jsr $0FD0
+1E01  4C D4 1D  jmp $1DD4
+
+; ----- 0x1e10 -----
+1E10  38        sec 
+1E11  A2 07     ldx #$07
+1E13  BD 5D 07  lda $075D,x
+1E16  95 A0     sta $A0,x
+1E18  BD DD 07  lda $07DD,x
+1E1B  FD 5D 07  sbc $075D,x
+1E1E  CA        dex 
+1E1F  10 F2     bpl $1E13
+1E21  B0 0A     bcs $1E2D
+1E23  A2 07     ldx #$07
+1E25  BD 5D 07  lda $075D,x
+1E28  95 11     sta $11,x
+1E2A  CA        dex 
+1E2B  10 F8     bpl $1E25
+1E2D  A9 00     lda #$00
+1E2F  85 02     sta $02
+1E31  85 04     sta $04
+1E33  A8        tay 
+1E34  A9 20     lda #$20
+1E36  85 03     sta $03
+1E38  A9 04     lda #$04
+1E3A  85 05     sta $05
+1E3C  AA        tax 
+1E3D  B1 02     lda ($02),y
+1E3F  91 04     sta ($04),y
+1E41  C8        iny 
+1E42  D0 F9     bne $1E3D
+1E44  E6 03     inc $03
+1E46  E6 05     inc $05
+1E48  CA        dex 
+1E49  D0 F2     bne $1E3D
+1E4B  4C D0 29  jmp $29D0
+
+; ----- 0x1e50 -----
+1E50  A9 24     lda #$24
+1E52  85 03     sta $03
+1E54  A0 00     ldy #$00
+1E56  84 02     sty $02
+1E58  84 04     sty $04
+1E5A  A2 04     ldx #$04
+1E5C  86 05     stx $05
+1E5E  B1 02     lda ($02),y
+1E60  91 04     sta ($04),y
+1E62  C8        iny 
+1E63  D0 F9     bne $1E5E
+1E65  E6 03     inc $03
+1E67  E6 05     inc $05
+1E69  CA        dex 
+1E6A  D0 F2     bne $1E5E
+1E6C  AD 61 C0  lda $C061
+1E6F  10 FB     bpl $1E6C
+1E71  60        rts 
+
+; ----- 0x1e80 -----
+1E80  A2 27     ldx #$27
+1E82  BD B0 1E  lda $1EB0,x
+1E85  9D 50 06  sta $0650,x
+1E88  BD D8 1E  lda $1ED8,x
+1E8B  9D D0 06  sta $06D0,x
+1E8E  BD 00 1F  lda $1F00,x
+1E91  9D 50 07  sta $0750,x
+1E94  BD 28 1F  lda $1F28,x
+1E97  9D D0 07  sta $07D0,x
+1E9A  CA        dex 
+1E9B  10 E5     bpl $1E82
+1E9D  A2 07     ldx #$07
+1E9F  B5 11     lda $11,x
+1EA1  9D DD 07  sta $07DD,x
+1EA4  CA        dex 
+1EA5  10 F8     bpl $1E9F
+1EA7  60        rts 
+
+; ----- 0x2880 -----
+2880  A2 27     ldx #$27
+2882  BD 50 1F  lda $1F50,x
+2885  9D 80 06  sta $0680,x
+2888  BD 78 1F  lda $1F78,x
+288B  9D 00 07  sta $0700,x
+288E  BD A0 1F  lda $1FA0,x
+2891  9D 80 07  sta $0780,x
+2894  BD C8 1F  lda $1FC8,x
+2897  9D 28 04  sta $0428,x
+289A  BD 00 28  lda $2800,x
+289D  9D 28 07  sta $0728,x
+28A0  BD 28 28  lda $2828,x
+28A3  9D A8 07  sta $07A8,x
+28A6  BD 50 28  lda $2850,x
+28A9  9D 50 04  sta $0450,x
+28AC  CA        dex 
+28AD  10 D3     bpl $2882
+28AF  60        rts 
+
+; ----- 0x28b0 -----
+28B0  20 20 09  jsr $0920
+28B3  20 80 09  jsr $0980
+28B6  20 60 1A  jsr $1A60
+28B9  20 30 0E  jsr $0E30
+28BC  20 F0 0E  jsr $0EF0
+28BF  20 80 1B  jsr $1B80
+28C2  20 80 28  jsr $2880
+28C5  4C 80 1E  jmp $1E80
+
+; ----- 0x28d0 -----
+28D0  A9 11     lda #$11
+28D2  8D A9 04  sta $04A9
+28D5  8D AE 04  sta $04AE
+28D8  A9 1B     lda #$1B
+28DA  8D AB 04  sta $04AB
+28DD  8D AC 04  sta $04AC
+28E0  8D AD 04  sta $04AD
+28E3  A9 12     lda #$12
+28E5  8D AA 04  sta $04AA
+28E8  A9 00     lda #$00
+28EA  20 A8 FC  jsr $FCA8
+28ED  20 A8 FC  jsr $FCA8
+28F0  20 A8 FC  jsr $FCA8
+28F3  20 A8 FC  jsr $FCA8
+28F6  A9 1D     lda #$1D
+28F8  8D AD 04  sta $04AD
+28FB  20 30 29  jsr $2930
+28FE  A9 1B     lda #$1B
+2900  8D AD 04  sta $04AD
+2903  A9 1D     lda #$1D
+2905  8D AC 04  sta $04AC
+2908  20 30 29  jsr $2930
+290B  A9 1B     lda #$1B
+290D  8D AC 04  sta $04AC
+2910  A9 1D     lda #$1D
+2912  8D AB 04  sta $04AB
+2915  20 30 29  jsr $2930
+2918  A9 1B     lda #$1B
+291A  8D AB 04  sta $04AB
+291D  A9 1E     lda #$1E
+291F  8D AA 04  sta $04AA
+2922  20 50 29  jsr $2950
+2925  20 50 29  jsr $2950
+2928  A9 00     lda #$00
+292A  4C A8 FC  jmp $FCA8
+
+; ----- 0x2930 -----
+2930  A0 60     ldy #$60
+2932  A9 20     lda #$20
+2934  20 A8 FC  jsr $FCA8
+2937  AD 30 C0  lda $C030
+293A  88        dey 
+293B  D0 F5     bne $2932
+293D  A9 00     lda #$00
+293F  20 A8 FC  jsr $FCA8
+2942  20 A8 FC  jsr $FCA8
+2945  4C A8 FC  jmp $FCA8
+
+; ----- 0x2950 -----
+2950  A0 00     ldy #$00
+2952  A9 0D     lda #$0D
+2954  20 A8 FC  jsr $FCA8
+2957  AD 30 C0  lda $C030
+295A  88        dey 
+295B  D0 F5     bne $2952
+295D  60        rts 
+
+; ----- 0x2970 -----
+2970  20 20 08  jsr $0820
+2973  20 80 08  jsr $0880
+2976  20 A0 08  jsr $08A0
+2979  20 06 09  jsr $0906
+297C  A9 B0     lda #$B0
+297E  A2 07     ldx #$07
+2980  95 11     sta $11,x
+2982  CA        dex 
+2983  10 FB     bpl $2980
+2985  20 50 1E  jsr $1E50
+2988  A9 00     lda #$00
+298A  85 01     sta $01
+298C  85 0B     sta $0B
+298E  85 0E     sta $0E
+2990  85 10     sta $10
+2992  A9 20     lda #$20
+2994  85 00     sta $00
+2996  A9 40     lda #$40
+2998  85 0D     sta $0D
+299A  A9 60     lda #$60
+299C  85 0C     sta $0C
+299E  85 0F     sta $0F
+29A0  A9 FF     lda #$FF
+29A2  85 0A     sta $0A
+29A4  20 B0 28  jsr $28B0
+29A7  20 D0 28  jsr $28D0
+29AA  4C C0 1D  jmp $1DC0
+
+; ----- 0x29b0 -----
+29B0  A2 07     ldx #$07
+29B2  A9 40     lda #$40
+29B4  20 A8 FC  jsr $FCA8
+29B7  A0 50     ldy #$50
+29B9  A9 30     lda #$30
+29BB  20 A8 FC  jsr $FCA8
+29BE  AD 30 C0  lda $C030
+29C1  88        dey 
+29C2  D0 F5     bne $29B9
+29C4  CA        dex 
+29C5  D0 EB     bne $29B2
+29C7  60        rts 
+
+; ----- 0x29d0 -----
+29D0  20 80 1E  jsr $1E80
+29D3  A2 07     ldx #$07
+29D5  B5 A0     lda $A0,x
+29D7  9D 5D 07  sta $075D,x
+29DA  CA        dex 
+29DB  10 F8     bpl $29D5
+29DD  20 B0 29  jsr $29B0
+29E0  A9 00     lda #$00
+29E2  A2 20     ldx #$20
+29E4  20 A8 FC  jsr $FCA8
+29E7  CA        dex 
+29E8  D0 FA     bne $29E4
+29EA  4C 85 29  jmp $2985

@@ -1,0 +1,4 @@
+al 000300 .relocate_and_start
+al 00032C .loader_end
+al 00031F .delay
+al 000300 .relocate_and_start

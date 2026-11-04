@@ -1,0 +1,1 @@
+{"id": "c991b57c98444d0caf42a17cf1955e03", "code": "manager.machine.ioport.ports[\":gameio:joy:joystick_buttons\"].fields[\"P1 Button 1\"]:set_value(1); manager.machine.ioport.ports[\":gameio:joy:joystick_1_x\"].fields[\"P1 Joystick X\"]:set_value(64); return true"}

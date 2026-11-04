@@ -1,0 +1,1 @@
+{"id": "9ee4d64877b04427845dfc73db4c56a2", "code": "local out={} for tag,p in pairs(manager.machine.ioport.ports) do if tag:find(\"gameio\") then local fs={} for _,f in pairs(p.fields) do fs[#fs+1]={name=f.name,def=f.defvalue,mask=f.mask} end out[#out+1]={tag=tag,fields=fs} end end return out"}

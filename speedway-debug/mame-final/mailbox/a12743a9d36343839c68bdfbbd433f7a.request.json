@@ -1,0 +1,1 @@
+{"id": "a12743a9d36343839c68bdfbbd433f7a", "code": "manager.machine.ioport.ports[\":gameio:joy:joystick_buttons\"].fields[\"P1 Button 1\"]:clear_value(); return a2.clear_breakpoint(2)"}

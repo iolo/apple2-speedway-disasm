@@ -1,0 +1,25 @@
+{
+  "payload_sha256": "4b6aad782d40778e4557b4d356ad0681787ccbd361d7a1e770dc0b44862f9743",
+  "disk_sha256": "d8c17629896d4e4533bac5c8f3a5b812dc6e0ee19838069e961794338ee57262",
+  "payload_bytes": 9728,
+  "source_only_clean_builds": 2,
+  "source_only_inputs": [
+    "Makefile",
+    "src/",
+    "tools/"
+  ],
+  "all_three_builds_match_working_disk": true,
+  "edit_probe": {
+    "file": "src/speedway.s",
+    "instruction_address": "$2992",
+    "changed_operand_address": "$2993 (dump $6993)",
+    "before": "$20",
+    "after": "$21",
+    "payload_difference_offsets": [
+      9619
+    ],
+    "disk_payload_matches_modified_assembly": true,
+    "probe_source_restored": true
+  },
+  "runtime_evidence": "Reused the byte-identical disk from the prior Apple2TS/MAME tests; no new emulator run."
+}

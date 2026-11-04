@@ -1,0 +1,9 @@
+{
+  "payload_bytes": 9728,
+  "payload_sha256": "4b6aad782d40778e4557b4d356ad0681787ccbd361d7a1e770dc0b44862f9743",
+  "disk_sha256": "d8c17629896d4e4533bac5c8f3a5b812dc6e0ee19838069e961794338ee57262",
+  "matches_repaired_hex": true,
+  "matches_repaired_basic_data": true,
+  "matches_repaired_basic_listing": true,
+  "matches_entire_working_disk": true
+}

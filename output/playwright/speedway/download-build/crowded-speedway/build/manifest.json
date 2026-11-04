@@ -1,0 +1,12 @@
+{
+  "format": "DOS 3.3, 140 KB DOS sector order",
+  "load_address": "$4400",
+  "runtime_range": "$0400-$29FF",
+  "entry": "$2970",
+  "loader_address": "$0300",
+  "payload_bytes": 9728,
+  "payload_sha256": "4b6aad782d40778e4557b4d356ad0681787ccbd361d7a1e770dc0b44862f9743",
+  "loader_sha256": "cbe6878922ee492e6d5a3c0d9e5db2202f494b74e130a6351c802ad4f387d13f",
+  "disk_sha256": "d8c17629896d4e4533bac5c8f3a5b812dc6e0ee19838069e961794338ee57262",
+  "disk_round_trip": "passed (BIN header/payload and both BASIC files)"
+}

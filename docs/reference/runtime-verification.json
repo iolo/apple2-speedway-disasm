@@ -1,0 +1,222 @@
+{
+  "disk_sha256": "d8c17629896d4e4533bac5c8f3a5b812dc6e0ee19838069e961794338ee57262",
+  "payload_sha256": "4b6aad782d40778e4557b4d356ad0681787ccbd361d7a1e770dc0b44862f9743",
+  "payload_length": 9728,
+  "hex_rows": 1216,
+  "deterministic_rebuild": true,
+  "missing_original_hex_range": "$4BA0-$50AF (162 rows, 1296 bytes)",
+  "original_disk_vs_full_literal_listing": {
+    "differing_bytes": 1183,
+    "first": "$4BA0",
+    "last": "$50AF"
+  },
+  "runtime_patches": [
+    {
+      "staging_address": "$4993",
+      "runtime_address": "$0993",
+      "before": "44",
+      "after": "A4"
+    },
+    {
+      "staging_address": "$4F56",
+      "runtime_address": "$0F56",
+      "before": "0B",
+      "after": "08"
+    }
+  ],
+  "mame": {
+    "detail": {
+      "samples": [
+        {
+          "brakeNG": 0,
+          "curve": 32,
+          "score": "00000000",
+          "lives": 57,
+          "event": "initial",
+          "frame": 1,
+          "window": 0,
+          "brake": 3
+        },
+        {
+          "brakeNG": 0,
+          "curve": 21,
+          "score": "00000011",
+          "lives": 57,
+          "event": "left",
+          "frame": 12,
+          "window": 0,
+          "brake": 3
+        },
+        {
+          "brakeNG": 0,
+          "curve": 33,
+          "score": "00000023",
+          "lives": 57,
+          "event": "right",
+          "frame": 24,
+          "window": 0,
+          "brake": 3
+        },
+        {
+          "brakeNG": 0,
+          "curve": 33,
+          "score": "00000023",
+          "lives": 57,
+          "event": "brake start",
+          "frame": 24,
+          "window": 0,
+          "brake": 3
+        },
+        {
+          "brakeNG": 0,
+          "curve": 33,
+          "score": "00000023",
+          "lives": 57,
+          "event": "driving",
+          "frame": 100,
+          "window": 0,
+          "brake": 3
+        },
+        {
+          "brakeNG": 1,
+          "curve": 33,
+          "score": "00000081",
+          "lives": 56,
+          "event": "driving",
+          "frame": 200,
+          "window": 0,
+          "brake": 1
+        },
+        {
+          "brakeNG": 1,
+          "curve": 33,
+          "score": "00000134",
+          "lives": 54,
+          "event": "curve generation",
+          "frame": 255,
+          "window": 0,
+          "brake": 1
+        },
+        {
+          "brakeNG": 1,
+          "curve": 10,
+          "score": "00000178",
+          "lives": 53,
+          "event": "driving",
+          "frame": 300,
+          "window": 68,
+          "brake": 1
+        },
+        {
+          "brakeNG": 1,
+          "curve": 10,
+          "score": "00000277",
+          "lives": 52,
+          "event": "driving",
+          "frame": 400,
+          "window": 8,
+          "brake": 1
+        },
+        {
+          "brakeNG": 1,
+          "curve": 10,
+          "score": "00000294",
+          "lives": 52,
+          "event": "curve generation",
+          "frame": 417,
+          "window": 0,
+          "brake": 1
+        },
+        {
+          "brakeNG": 1,
+          "curve": 43,
+          "score": "00000326",
+          "lives": 51,
+          "event": "braking",
+          "frame": 450,
+          "window": 190,
+          "brake": 1
+        },
+        {
+          "brakeNG": 1,
+          "curve": 52,
+          "score": "00000374",
+          "lives": 49,
+          "event": "driving",
+          "frame": 500,
+          "window": 178,
+          "brake": 1
+        },
+        {
+          "brakeNG": 1,
+          "curve": 52,
+          "score": "00000448",
+          "lives": 47,
+          "event": "game over",
+          "frame": 575,
+          "window": 254,
+          "brake": 1
+        }
+      ],
+      "crashes": 10
+    },
+    "steps": 1034,
+    "reason": "native game over",
+    "pc": 7696,
+    "ok": true,
+    "host_seconds": 2,
+    "phase": "joystick gameplay",
+    "cleanup_errors": [],
+    "emulated_seconds": 96.766743002495
+  },
+  "restart": {
+    "detail": {
+      "frames": 80,
+      "score": [
+        176,
+        176,
+        176,
+        176,
+        176,
+        176,
+        183,
+        182
+      ],
+      "high": [
+        176,
+        176,
+        176,
+        176,
+        176,
+        180,
+        180,
+        184
+      ]
+    },
+    "steps": 80,
+    "reason": "restarted gameplay",
+    "pc": 7636,
+    "ok": true,
+    "host_seconds": 0,
+    "phase": "restart",
+    "cleanup_errors": [],
+    "emulated_seconds": 126.26934918764
+  },
+  "apple2ts": {
+    "final_disk_cold_boot_to_PB0_wait": true,
+    "PC": "$1E6C",
+    "relocated_curve_call": [
+      32,
+      240,
+      8,
+      240
+    ]
+  },
+  "real_hardware_tested": false,
+  "mame_disk_contents_match_final": {
+    "binary": true,
+    "HELLO": true,
+    "SPEEDWAY-RUN": true,
+    "note": "MAME used a private copy before the deterministic final repack; all three file payloads match the final disk exactly. Its source_unchanged exit flag is false because the source disk was deliberately rebuilt while the private copy was in use."
+  }
+}

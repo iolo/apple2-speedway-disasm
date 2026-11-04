@@ -1,0 +1,250 @@
+{
+  "origin": 1024,
+  "end_exclusive": 10752,
+  "staging_origin": 17408,
+  "entry": 10608,
+  "reachable_instructions": 1281,
+  "reachable_instruction_bytes": 2673,
+  "retained_instruction_fragments": {
+    "$09AB-$09B2": 8,
+    "$295F-$2961": 3
+  },
+  "data_and_padding_bytes": 7044,
+  "routines": [
+    {
+      "address": "$0800",
+      "name": "multiply_shift_add",
+      "comment": "Shift/add helper. $50/$51 is the 16-bit addend; $54 supplies bits.\nX+1 iterations build $52/$53. Clobbers A, X, flags and $52-$54; preserves Y."
+    },
+    {
+      "address": "$0820",
+      "name": "build_road_positions",
+      "comment": "Build perspective/curve lookup pages $4000-$53FF for curve indices 1..63.\nEach page represents one of 20 depth rows. Uses the multiply helper and $02-$05."
+    },
+    {
+      "address": "$0880",
+      "name": "build_road_widths",
+      "comment": "Write depth-dependent road widths at offset zero of pages $4000-$5300.\nWidths are 4*depth+2; the renderer uses this table to fill the road."
+    },
+    {
+      "address": "$08A0",
+      "name": "build_traffic_paths",
+      "comment": "Build seven 15-entry lane/displacement tables at $4050, $4150, ... $4650.\nThe traffic update routines select one table through their path pointer."
+    },
+    {
+      "address": "$08F0",
+      "name": "random_byte",
+      "comment": "Read ROM through ($06),Y and XOR with the evolving $4E/$4F pair.\nReturns A; advances $08 and the ROM page on wrap. Not a uniform-RNG claim."
+    },
+    {
+      "address": "$0906",
+      "name": "reset_random_cursor",
+      "comment": "Set the ROM stream cursor to $E000 and index zero; preserves A with PHA/PLA.\nThe XOR seed bytes $4E/$4F are deliberately not initialized here."
+    },
+    {
+      "address": "$0920",
+      "name": "clear_road_buffer",
+      "comment": "Fill twenty 256-byte row buffers at $6000-$73FF with $CC.\nEach byte initially holds background color 12 in both lores nibbles."
+    },
+    {
+      "address": "$0970",
+      "name": "frame_click",
+      "comment": "Two short speaker toggles separated by ROM WAIT calls.\nUsed for frame pacing and in the crash animation; clobbers A, Y."
+    },
+    {
+      "address": "$0980",
+      "name": "draw_road",
+      "comment": "For each depth: read width at table offset 0, position at curve_index,\nthen fill that span in the corresponding $60xx-$73xx buffer with $AA."
+    },
+    {
+      "address": "$09AB",
+      "name": "retained_keyboard_fragment",
+      "comment": "UNREFERENCED instruction fragment. Reads the keyboard and compares SPACE.\nIts literal BNE targets $09A0 inside draw_road, not this polling instruction.\nNo caller was found. Preserve these bytes and the unusual branch unchanged."
+    },
+    {
+      "address": "$09C0",
+      "name": "random_lane",
+      "comment": "Return random_byte AND 7, mapping the result 7 to 3.\nThe result chooses one of seven lane tables; no statistical guarantee."
+    },
+    {
+      "address": "$09D0",
+      "name": "random_two_bits",
+      "comment": "Return random_byte AND 3; zero permits traffic/sign spawning."
+    },
+    {
+      "address": "$09E0",
+      "name": "update_car_one",
+      "comment": "Spawn/update/draw traffic car 1 using state $60-$68.\nDepth chooses small solid marks or four-/six-row perspective sprites.\n$FF terminates each medium/large sprite row; it is not drawn."
+    },
+    {
+      "address": "$0C00",
+      "name": "update_left_sign",
+      "comment": "Spawn/update a left-side white sign in the row buffers using $70-$75.\nThe sign grows from a point to a 4/6/8-row block as depth increases."
+    },
+    {
+      "address": "$0C90",
+      "name": "update_right_sign",
+      "comment": "Right-side counterpart of update_left_sign; state lives at $80-$85."
+    },
+    {
+      "address": "$0D20",
+      "name": "update_car_two",
+      "comment": "Spawn/update/draw traffic car 2 using state $90-$98.\nShares the medium/large traffic sprite tables with update_car_one."
+    },
+    {
+      "address": "$0E10",
+      "name": "draw_traffic_in_depth_order",
+      "comment": "Compare the two depth bytes, then update/draw the farther car first.\nTail JMP lets the second update return directly to the caller."
+    },
+    {
+      "address": "$0E30",
+      "name": "blit_road_window",
+      "comment": "Copy a 40-byte viewport from twenty row buffers to lores page 1.\nPair the low nibble from one row with the high nibble from the next.\nY starts at view_offset+$94; screen rows use Apple II interleaved addresses."
+    },
+    {
+      "address": "$0EF0",
+      "name": "blit_scenery",
+      "comment": "Copy 40 columns from ten 256-byte scenery strips at $1000-$19FF.\nscenery_offset is the wrapping source index; destination is lores page 1."
+    },
+    {
+      "address": "$0F40",
+      "name": "advance_road_segment",
+      "comment": "Count down segment_steps. Alternate a straight section and a nonzero\nsigned turn from random_byte. Durations come from $0C/$0D."
+    },
+    {
+      "address": "$0F60",
+      "name": "steer_on_straight",
+      "comment": "Read paddle 0 with ROM PREAD. After four right shifts, values 3 or 4\nare neutral (raw paddle 48..79). Other values move curve_index within bounds."
+    },
+    {
+      "address": "$0F90",
+      "name": "steer_on_curve",
+      "comment": "Read paddle 0 and alter the signed view_offset during a turn.\nExtreme readings can move it twice. This uses signed-byte tests, not a clamp."
+    },
+    {
+      "address": "$0FD0",
+      "name": "increment_score",
+      "comment": "Increment eight high-bit Apple II decimal characters at SCORE_TEXT.\nCarry from the least-significant character toward the left; no BCD mode."
+    },
+    {
+      "address": "$1A00",
+      "name": "advance_curve_and_steer",
+      "comment": "Apply the current segment turn to road curvature, scenery, and viewport.\nThen tail-call the appropriate paddle steering routine."
+    },
+    {
+      "address": "$1A60",
+      "name": "draw_player_car",
+      "comment": "Select one of three 10-column poses from the sign of view_offset.\nDraw six rows into $6E00-$7300 at $7C+view_offset; zero pixels are transparent."
+    },
+    {
+      "address": "$1B80",
+      "name": "draw_cockpit_details",
+      "comment": "Update small screen details at $055F-$0568 / $05DF-$05E8 according\nto the sign of view_offset. Exact visual meaning is not fully identified."
+    },
+    {
+      "address": "$1C00",
+      "name": "decrement_score",
+      "comment": "Subtract one from the same high-bit decimal score text.\nCalled while braking so the later increment_score does not increase score."
+    },
+    {
+      "address": "$1C20",
+      "name": "update_brake",
+      "comment": "Read PB0 bit 7. Released brake recovers reserve up to a signed-byte limit.\nHeld brake slows active cars once per divider, spends reserve, and sounds.\nWhen reserve reaches zero, brake_failed stays set until a new game."
+    },
+    {
+      "address": "$1C70",
+      "name": "check_player_collision",
+      "comment": "Inspect the player footprint in rows $7200/$7300 before drawing the car.\nOnly $AA road and $CC background are allowed. On contact JMP handle_crash;\nthat handler discards this routine's JSR return address."
+    },
+    {
+      "address": "$1D30",
+      "name": "draw_crash_frame_a",
+      "comment": "Copy a 16-column, four-byte-row crash picture directly to lores page 1."
+    },
+    {
+      "address": "$1D50",
+      "name": "draw_crash_frame_b",
+      "comment": "Second crash picture, using the adjacent 64-byte sprite block."
+    },
+    {
+      "address": "$1D70",
+      "name": "handle_crash",
+      "comment": "NONLOCAL entry reached by JMP from check_player_collision.\nPLA/PLA discard that routine's return address, then flash two crash frames.\nAfter a delay, continue at lose_car_and_restart; this handler does not RTS."
+    },
+    {
+      "address": "$1DC0",
+      "name": "lose_car_and_restart",
+      "comment": "Decrement the high-bit text character at CARS_LEFT_TEXT.\nStart-up template contains a colon ($BA), so the first decrement displays 9.\nAfter 0, $AF compares below $B0 and reaches game_over (ten cars in total)."
+    },
+    {
+      "address": "$1DD4",
+      "name": "game_loop",
+      "comment": "One gameplay update: clear buffers, advance road/steering, draw road,\napply brake, update traffic/signs, test collision, draw car, blit scenery/road,\nupdate cockpit, pace/sound, increment score, repeat."
+    },
+    {
+      "address": "$1E10",
+      "name": "game_over",
+      "comment": "Compare the eight score digits with the displayed high score, propagating\nborrow from right to left. Save the score in $A0-$A7; update $11-$18 if larger.\nCopy the page at $2000 to the display, then jump to the result presentation."
+    },
+    {
+      "address": "$1E50",
+      "name": "show_title_and_wait",
+      "comment": "Copy the 1 KB title page at $2400 to screen $0400-$07FF.\nBusy-wait for paddle button 0, then return to the game initializer."
+    },
+    {
+      "address": "$1E80",
+      "name": "initialize_hud",
+      "comment": "Copy four 40-character HUD rows and the eight-digit high score to page 1.\nThis resets the score and the cars-left colon sentinel from the templates."
+    },
+    {
+      "address": "$2880",
+      "name": "draw_start_overlay",
+      "comment": "Copy seven 40-byte lores rows from split overlay data to the start view.\nThe source is split across $1F50-$1FEF and $2800-$2877."
+    },
+    {
+      "address": "$28B0",
+      "name": "prepare_start_view",
+      "comment": "Render the road, player, scenery, cockpit, overlay, then initialize HUD.\nThe final JMP to initialize_hud returns to the original caller."
+    },
+    {
+      "address": "$28D0",
+      "name": "animate_start_lights",
+      "comment": "Draw a small signal on lores page 1, change its lamps in sequence,\nand play countdown/start tones using the speaker and ROM WAIT."
+    },
+    {
+      "address": "$2930",
+      "name": "countdown_tone",
+      "comment": "Toggle speaker 96 times with a fixed ROM WAIT argument, then pause."
+    },
+    {
+      "address": "$2950",
+      "name": "start_tone",
+      "comment": "Toggle speaker 256 times (Y wraps from zero) with a shorter delay."
+    },
+    {
+      "address": "$295F",
+      "name": "retained_wait_jump",
+      "comment": "UNREFERENCED JMP WAIT fragment following start_tone; preserve literally."
+    },
+    {
+      "address": "$2970",
+      "name": "game_entry",
+      "comment": "Entry after BASIC declares GR and the $0300 loader relocates the payload.\nBuild perspective/path tables, reset the ROM cursor, initialize high score.\nThere is no return to BASIC: its source has already been overwritten."
+    },
+    {
+      "address": "$2985",
+      "name": "new_game",
+      "comment": "Show title and wait for PB0. Reset game state, prepare the start view,\nrun the signal sequence, then enter lose_car_and_restart."
+    },
+    {
+      "address": "$29B0",
+      "name": "game_over_sound",
+      "comment": "Seven groups of delayed speaker toggles. Clobbers A, X, Y."
+    },
+    {
+      "address": "$29D0",
+      "name": "present_game_over",
+      "comment": "Initialize HUD, restore the just-finished score from $A0-$A7, play sound,\npause, and jump to new_game without clearing the saved high score."
+    }
+  ]
+}

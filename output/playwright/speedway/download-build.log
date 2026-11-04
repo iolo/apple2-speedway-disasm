@@ -1,0 +1,25 @@
+make: Entering directory '/home/iolo/workspace/retro/maso-archive/tmp/output/playwright/speedway/download-build/crowded-speedway'
+mkdir -p "build"
+ca65 -g -I src -l build/speedway.lst -o "build/speedway.o" "src/speedway.s"
+ca65 -g -l build/loader.lst -o "build/loader.o" "src/loader.s"
+ld65 -C src/loader.cfg -m build/loader.map \
+	-Ln build/loader.lbl -o "build/loader.bin" "build/loader.o"
+ld65 -C src/speedway.cfg -m build/speedway.map \
+	-Ln build/speedway.lbl --dbgfile build/speedway.dbg -o "build/speedway.bin" "build/speedway.o"
+python3 tools/package_disk.py --a2kit "a2kit" \
+	--payload build/speedway.bin --loader build/loader.bin \
+	--template src/speedway-run.bas.in --hello src/hello.bas --output "build/speedway.dsk"
+writing 143360 bytes
+
+
+DISK VOLUME 254
+
+ A 002 HELLO
+ A 003 SPEEDWAY-RUN
+ B 040 CROWDED SPEED WAY
+
+Built build/speedway.dsk: 9728 assembled payload bytes; all disk files verified.
+python3 tools/verify_build.py --build build \
+	--hex "crowded speed way.hex" --basic speedway-run.bas --disk speedway.dsk
+PASS: assembled payload, 44-byte loader, generated BASIC, and entire disk are byte-identical.
+make: Leaving directory '/home/iolo/workspace/retro/maso-archive/tmp/output/playwright/speedway/download-build/crowded-speedway'

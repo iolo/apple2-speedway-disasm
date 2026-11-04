@@ -1,0 +1,461 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - paragraph [ref=f1e3]: December 1984 · Apple II · pp. 88–97
+    - heading "Crowded Speedway" [level=1] [ref=f1e4]
+    - paragraph [ref=f1e5]: A magazine listing, back on the road.
+    - paragraph [ref=f1e6]: "Original title: 크라우디드 스피드 웨이 Original credit: 편집부 편역 — editorial translation and adaptation. Revised English edition with recovered source and build notes · 4 November 2026"
+    - paragraph [ref=f1e7]: A road full of cars, a paddle in your hand, and one brake you cannot afford to burn out. This December 1984 Apple II game makes a convincing race from low-resolution graphics. Here is the article revisited, with a working disk, fresh screenshots, and assembly source you can build with the cc65 tools.
+    - figure "On the road again. A capture from the repaired program running on MAME’s unenhanced Apple IIe. The raw 560 × 192 capture is displayed with doubled vertical scale." [ref=f1e8]:
+      - 'img "Crowded Speedway running in MAME: a winding grey road, green roadside scenery, the player''s car, and score text below." [ref=f1e10]'
+    - paragraph [ref=f1e12]:
+      - link "Download the bootable disk" [ref=f1e13] [cursor=pointer]:
+        - /url: downloads/speedway.dsk
+      - text: ·
+      - link "Download the complete source package" [ref=f1e14] [cursor=pointer]:
+        - /url: downloads/crowded-speedway-source.zip
+  - navigation "Article contents" [ref=f1e15]:
+    - list [ref=f1e16]:
+      - listitem [ref=f1e17]:
+        - link "1. The race" [ref=f1e18] [cursor=pointer]:
+          - /url: "#race"
+      - listitem [ref=f1e19]:
+        - link "2. Run it on an Apple II" [ref=f1e20] [cursor=pointer]:
+          - /url: "#run"
+      - listitem [ref=f1e21]:
+        - link "3. How the program works" [ref=f1e22] [cursor=pointer]:
+          - /url: "#machine"
+      - listitem [ref=f1e23]:
+        - link "4. From printed bytes to working code" [ref=f1e24] [cursor=pointer]:
+          - /url: "#repairs"
+      - listitem [ref=f1e25]:
+        - link "5. Build it with cc65" [ref=f1e26] [cursor=pointer]:
+          - /url: "#build"
+      - listitem [ref=f1e27]:
+        - link "6. Reading the disassembly" [ref=f1e28] [cursor=pointer]:
+          - /url: "#reading"
+      - listitem [ref=f1e29]:
+        - link "7. What has been verified" [ref=f1e30] [cursor=pointer]:
+          - /url: "#checks"
+      - listitem [ref=f1e31]:
+        - link "8. Complete source listings" [ref=f1e32] [cursor=pointer]:
+          - /url: "#source"
+      - listitem [ref=f1e33]:
+        - link "Sources and editorial notes" [ref=f1e34] [cursor=pointer]:
+          - /url: "#provenance"
+  - main [ref=f1e35]:
+    - article [ref=f1e36]:
+      - generic [ref=f1e37]:
+        - heading "1. The race" [level=2] [ref=f1e38]
+        - paragraph [ref=f1e39]: "The original editors describe a race around Jeju Island, with Hallasan in the background. The highway is crowded: cars approach along the road, large signs loom at its edges, and a sharp curve can suddenly leave the car badly placed. The scenery moves with the road and your steering, helping a small block-graphics display feel like a much wider world."
+        - paragraph [ref=f1e40]: You need paddle 0 or the horizontal axis of an Apple II joystick. Press button 0 at the title screen to begin. During the race, that same button is the brake. Use it in short bursts to make room among the traffic. Keep it held down and the brake will burn out; it then stays unusable for the rest of the game.
+        - paragraph [ref=f1e41]: The score rises as you drive and stops rising while the working brake is held. You have ten cars to use up. After a collision the program flashes an explosion, reduces the allowance, and puts you back on the road. At game over it compares the score with the high score, then lets you start again.
+        - generic [ref=f1e42]:
+          - figure "The starting line as photographed in the December 1984 article, printed page 88. This is a scan crop from the restored source." [ref=f1e43]:
+            - 'img "The original magazine''s black-and-white photograph of the game: START above a chequered starting line." [ref=f1e44]'
+          - figure "The repaired game’s title screen in MAME. “PUSH SW0” means paddle/joystick button 0. As above, the capture is displayed at twice its raw vertical scale." [ref=f1e46]:
+            - img "The repaired game's colour title screen reading CROWDED SPEED WAY, with PUSH SW0 below." [ref=f1e48]
+        - paragraph [ref=f1e50]: The 1984 article credits an earlier appearance in the January 1983 issue of Japan’s ASCII. That attribution is reported here from the Korean article; the earlier Japanese publication has not been independently checked for this edition.
+      - generic [ref=f1e51]:
+        - heading "2. Run it on an Apple II" [level=2] [ref=f1e52]
+        - paragraph [ref=f1e53]:
+          - text: The supplied image is a bootable 140 KB DOS 3.3 disk in DOS sector order. Mount it as drive 1 and boot. Its
+          - code [ref=f1e54]: HELLO
+          - text: program automatically runs
+          - code [ref=f1e55]: SPEEDWAY-RUN
+          - text: ". If DOS is already running with the disk mounted, enter:"
+        - code [ref=f1e57]: RUN SPEEDWAY-RUN
+        - paragraph [ref=f1e58]:
+          - text: "Use an Apple II with Applesoft ROMs and at least 48 KB of RAM: an II+, IIe, or compatible machine. Run at normal Apple II speed, about 1 MHz. On a real machine, transfer the image to a 5.25-inch floppy or use a compatible disk-image interface; placing a"
+          - code [ref=f1e59]: .dsk
+          - text: file inside a DOS filesystem does not turn it into a boot disk.
+        - paragraph [ref=f1e60]:
+          - strong [ref=f1e61]: Check the paddle’s centre.
+          - text: The original code regards raw paddle readings 48–79 as neutral, with 64 a useful target. Lower values steer left; higher values steer right. An emulator that centres the input at 128 will pull right continuously. Adjust the emulated paddle position or range, or the physical joystick’s trim.
+        - paragraph [ref=f1e62]: "The brief orchard picture at startup belongs to the program: the loader copies it into screen memory, waits, and then starts the game. The move also overwrites Applesoft’s program area. A reset does not leave the BASIC listing intact; reboot to start cleanly."
+      - generic [ref=f1e63]:
+        - heading "3. How the program works" [level=2] [ref=f1e64]
+        - heading "Low resolution, a wide road" [level=3] [ref=f1e65]
+        - paragraph [ref=f1e66]:
+          - text: The article makes a point of using
+          - code [ref=f1e67]: GR
+          - text: rather than high-resolution graphics. In mixed mode the Apple II gives it a 40 × 40 graphics area with four text lines below. Most of the convincing depth comes from the arrangement of the data and the way it is copied.
+        - paragraph [ref=f1e68]:
+          - text: At startup the program calculates perspective and lane tables in
+          - code [ref=f1e69]: $4000–$53FF
+          - text: . During play it builds twenty separate 256-byte rows in
+          - code [ref=f1e70]: $6000–$73FF
+          - text: . The road is a span of
+          - code [ref=f1e71]: $AA
+          - text: bytes on a
+          - code [ref=f1e72]: $CC
+          - text: background. Traffic, signs, and the player’s car are added to those rows before a 40-column window is copied to the display.
+        - paragraph [ref=f1e73]: Each lores display byte contains two vertically adjacent colour pixels. The road blitter combines the low nibble of one row buffer with the high nibble of the next, then writes to the Apple II’s interleaved screen addresses. Ten separate 256-byte scenery strips provide the horizon and roadside view. Moving their source index makes the landscape scroll.
+        - heading "The game loop" [level=3] [ref=f1e74]
+        - paragraph [ref=f1e75]: The recovered loop is short enough to show the order of work. Collision is tested before the player’s car is drawn, so the car’s own pixels do not become obstacles. The road and scenery are copied to the screen only after the row buffers are ready.
+        - code [ref=f1e77]: "game_loop: jsr clear_road_buffer jsr advance_road_segment jsr advance_curve_and_steer jsr draw_road jsr update_brake jsr draw_traffic_in_depth_order jsr update_left_sign jsr update_right_sign jsr check_player_collision jsr draw_player_car jsr blit_road_window jsr blit_scenery jsr draw_cockpit_details jsr frame_click jsr increment_score jmp game_loop"
+        - paragraph [ref=f1e78]:
+          - text: At
+          - code [ref=f1e79]: update_brake
+          - text: ", a working brake subtracts one from the text-based score. The unconditional increment at the end of the loop adds it back, cancelling the usual increase. Score digits are high-bit Apple II characters, not packed BCD."
+        - heading "Where the program lives" [level=3] [ref=f1e80]
+        - table [ref=f1e82]:
+          - caption [ref=f1e83]: Selected runtime regions after relocation
+          - rowgroup [ref=f1e84]:
+            - row [ref=f1e85]:
+              - columnheader "Address" [ref=f1e86]
+              - columnheader "Use" [ref=f1e87]
+          - rowgroup [ref=f1e88]:
+            - row [ref=f1e89]:
+              - cell [ref=f1e90]:
+                - code [ref=f1e91]: $0300–$032B
+              - cell "The 44-byte relocation and delay stub." [ref=f1e92]
+            - row [ref=f1e93]:
+              - cell [ref=f1e94]:
+                - code [ref=f1e95]: $0400–$07FF
+              - cell "The initial orchard page, then the live screen." [ref=f1e96]
+            - row [ref=f1e97]:
+              - cell [ref=f1e98]:
+                - code [ref=f1e99]: $0800–$0FFF
+              - cell "Math, road/traffic routines, sprites, input, and blitters." [ref=f1e100]
+            - row [ref=f1e101]:
+              - cell [ref=f1e102]:
+                - code [ref=f1e103]: $1000–$19FF
+              - cell "Ten horizontal scenery strips." [ref=f1e104]
+            - row [ref=f1e105]:
+              - cell [ref=f1e106]:
+                - code [ref=f1e107]: $1A00–$1FFF
+              - cell "Steering, player/crash sprites, brake, main loop, HUD, and data." [ref=f1e108]
+            - row [ref=f1e109]:
+              - cell [ref=f1e110]:
+                - code [ref=f1e111]: $2000–$27FF
+              - cell "Game-over and title-screen pages." [ref=f1e112]
+            - row [ref=f1e113]:
+              - cell [ref=f1e114]:
+                - code [ref=f1e115]: $2800–$29FF
+              - cell "Start overlay, signals, sounds, initialization, and restart." [ref=f1e116]
+            - row [ref=f1e117]:
+              - cell [ref=f1e118]:
+                - code [ref=f1e119]: $4000–$53FF
+              - cell "Generated perspective and lane tables." [ref=f1e120]
+            - row [ref=f1e121]:
+              - cell [ref=f1e122]:
+                - code [ref=f1e123]: $6000–$73FF
+              - cell "Generated road/object row buffers." [ref=f1e124]
+        - paragraph [ref=f1e125]:
+          - text: The important zero-page variables are named in
+          - link [ref=f1e126] [cursor=pointer]:
+            - /url: source/src/memory.inc
+            - code [ref=f1e127]: memory.inc
+          - text: ": curvature at"
+          - code [ref=f1e128]: $00
+          - text: ", signed viewport offset at"
+          - code [ref=f1e129]: $01
+          - text: ", scenery index at"
+          - code [ref=f1e130]: $09
+          - text: ", road-section state at"
+          - code [ref=f1e131]: $0A–$0D
+          - text: ", and brake state at"
+          - code [ref=f1e132]: $0E–$10
+          - text: . The two traffic cars use state at
+          - code [ref=f1e133]: $60–$68
+          - text: and
+          - code [ref=f1e134]: $90–$98
+          - text: ; the signs use
+          - code [ref=f1e135]: $70–$75
+          - text: and
+          - code [ref=f1e136]: $80–$85
+          - text: .
+      - generic [ref=f1e137]:
+        - heading "4. From printed bytes to working code" [level=2] [ref=f1e138]
+        - paragraph [ref=f1e139]:
+          - text: The original procedure was to type an Applesoft loader, enter the long machine-code listing through the monitor, and save the payload at
+          - code [ref=f1e140]: $4400
+          - text: . The restored article preserves what the pages say. A runnable edition needs a separate record of corrections, because a faithful transcription and a working program are different checks.
+        - table [ref=f1e142]:
+          - caption [ref=f1e143]: Corrections included in this runnable edition
+          - rowgroup [ref=f1e144]:
+            - row [ref=f1e145]:
+              - columnheader "Location" [ref=f1e146]
+              - columnheader "Change" [ref=f1e147]
+              - columnheader "Reason" [ref=f1e148]
+          - rowgroup [ref=f1e149]:
+            - row [ref=f1e150]:
+              - cell [ref=f1e151]:
+                - text: Dump
+                - code [ref=f1e152]: $4BA0–$50AF
+              - cell "Restore 162 omitted rows." [ref=f1e153]
+              - cell "The extracted hex file skipped 1,296 bytes. The supplied disk had 1,183 incorrect bytes in that range, including code and graphics." [ref=f1e154]
+            - row [ref=f1e155]:
+              - cell [ref=f1e156]:
+                - text: Dump
+                - code [ref=f1e157]: $4993
+                - text: Runtime
+                - code [ref=f1e158]: $0993
+              - cell [ref=f1e159]:
+                - code [ref=f1e160]: 44 → A4
+              - cell [ref=f1e161]:
+                - text: Restore
+                - code [ref=f1e162]: LDY $00
+                - text: before the road-position lookup.
+            - row [ref=f1e163]:
+              - cell [ref=f1e164]:
+                - text: Dump
+                - code [ref=f1e165]: $4F56
+                - text: Runtime
+                - code [ref=f1e166]: $0F56
+              - cell [ref=f1e167]:
+                - code [ref=f1e168]: 0B → 08
+              - cell [ref=f1e169]:
+                - text: Call the random routine at
+                - code [ref=f1e170]: $08F0
+                - text: ", rather than sprite data at"
+                - code [ref=f1e171]: $0BF0
+                - text: .
+            - row [ref=f1e172]:
+              - cell "Applesoft DATA loader" [ref=f1e173]
+              - cell [ref=f1e174]:
+                - text: End the move at
+                - code [ref=f1e175]: $69FF
+                - text: .
+              - cell [ref=f1e176]:
+                - text: ROM MOVE uses an inclusive end. The printed
+                - code [ref=f1e177]: $6A00
+                - text: endpoint copied one extra byte.
+            - row [ref=f1e178]:
+              - cell "Disk startup" [ref=f1e179]
+              - cell [ref=f1e180]:
+                - text: Add
+                - code [ref=f1e181]: HELLO
+                - text: and an explicit PRINT separator.
+              - cell "The packaged disk boots directly into the repaired loader." [ref=f1e182]
+        - paragraph [ref=f1e183]:
+          - strong [ref=f1e184]: A note on the printed extra-cars tip.
+          - text: The article suggests changing the byte at
+          - code [ref=f1e185]: $5CD0
+          - text: to an INC instruction. In this dump, that address contains crash-picture data. The actual decrement is at runtime
+          - code [ref=f1e186]: $1DC0
+          - text: ", corresponding to dump address"
+          - code [ref=f1e187]: $5DC0
+          - text: . This edition preserves the ten-car logic and does not claim to validate the printed extended-play modification.
+        - paragraph [ref=f1e188]:
+          - text: The original filename spellings and uncertain source readings remain in the
+          - link "restored Korean article and hex listing" [ref=f1e189] [cursor=pointer]:
+            - /url: reference/original-article.txt
+          - text: . This revised page consistently uses the working filenames
+          - code [ref=f1e190]: SPEEDWAY-RUN
+          - text: and
+          - code [ref=f1e191]: CROWDED SPEED WAY
+          - text: .
+      - generic [ref=f1e192]:
+        - heading "5. Build it with cc65" [level=2] [ref=f1e193]
+        - paragraph [ref=f1e194]:
+          - text: "The modern version uses two tools from the cc65 suite:"
+          - strong [ref=f1e195]: ca65
+          - text: assembles the 6502 source and
+          - strong [ref=f1e196]: ld65
+          - text: links it at its runtime addresses. No C compiler or C runtime is involved. Python 3 and
+          - strong [ref=f1e197]: a2kit
+          - text: generate the BASIC DATA line, tokenize the BASIC programs, and construct a fresh bootable DOS 3.3 disk.
+        - paragraph [ref=f1e198]:
+          - text: Install GNU Make, ca65/ld65, Python 3, and a2kit so their executables are on your PATH. The build was verified with cc65 V2.19 (git a162565ec) and a2kit 4.4.2. Download
+          - link "the source package" [ref=f1e199] [cursor=pointer]:
+            - /url: downloads/crowded-speedway-source.zip
+          - text: ", then:"
+        - code [ref=f1e201]: unzip crowded-speedway-source.zip cd crowded-speedway make make verify
+        - paragraph [ref=f1e202]:
+          - text: The result is
+          - code [ref=f1e203]: build/speedway.dsk
+          - text: . The archive includes repaired comparison files for
+          - code [ref=f1e204]: make verify
+          - text: . The normal
+          - code [ref=f1e205]: make
+          - text: target builds from
+          - code [ref=f1e206]: Makefile
+          - text: ","
+          - code [ref=f1e207]: src/
+          - text: ", and"
+          - code [ref=f1e208]: tools/
+          - text: alone; it does not extract an old binary or copy a base game disk. a2kit supplies the DOS boot tracks.
+        - paragraph [ref=f1e209]: "In the original scratch workspace, the equivalent commands are:"
+        - code [ref=f1e211]: "make -C tmp make -C tmp verify # Output: tmp/build/speedway.dsk"
+        - paragraph [ref=f1e212]:
+          - code [ref=f1e213]: make clean
+          - text: removes only the project’s
+          - code [ref=f1e214]: build/
+          - text: directory.
+          - code [ref=f1e215]: make binary
+          - text: assembles the game and loader without packaging a disk. Executable paths can be overridden, for example
+          - code [ref=f1e216]: make CA65=/path/to/ca65
+          - text: .
+        - heading "The Makefile" [level=3] [ref=f1e217]
+        - paragraph [ref=f1e218]:
+          - text: The BASIC DATA line is generated from the assembled
+          - code [ref=f1e219]: loader.bin
+          - text: . Editing the loader’s assembly therefore changes the bytes that BASIC installs; there is no second hand-maintained byte list to keep in sync.
+        - group [ref=f1e220]:
+          - generic "Complete Makefile" [ref=f1e221] [cursor=pointer]
+        - paragraph [ref=f1e222]:
+          - link "Download Makefile" [ref=f1e223] [cursor=pointer]:
+            - /url: source/Makefile
+          - text: ·
+          - link "Disk packager" [ref=f1e224] [cursor=pointer]:
+            - /url: source/tools/package_disk.py
+          - text: ·
+          - link "Reference verifier" [ref=f1e225] [cursor=pointer]:
+            - /url: source/tools/verify_build.py
+      - generic [ref=f1e226]:
+        - heading "6. Reading the disassembly" [level=2] [ref=f1e227]
+        - heading "Assemble for the address where the code will run" [level=3] [ref=f1e228]
+        - paragraph [ref=f1e229]:
+          - text: The payload is loaded at
+          - code [ref=f1e230]: $4400–$69FF
+          - text: ", but executed at"
+          - code [ref=f1e231]: $0400–$29FF
+          - text: . All source labels, branches, and absolute references use the second range. Add
+          - code [ref=f1e232]: $4000
+          - text: to a runtime address to find its byte in the monitor dump.
+        - code [ref=f1e234]: "# Labels use runtime addresses. DOS loads the resulting raw bytes at $4400; # the $0300 relocation stub moves them down by $4000 before entry at $2970. MEMORY { RUNTIME: start = $0400, size = $2600, type = rw, file = %O; } SEGMENTS { PAYLOAD: load = RUNTIME, type = ro; }"
+        - paragraph [ref=f1e235]:
+          - text: The separate loader at
+          - code [ref=f1e236]: $0300
+          - text: sets the monitor’s source, end, and destination pointers, calls MOVE at
+          - code [ref=f1e237]: $FE2C
+          - text: ", delays, and jumps to"
+          - code [ref=f1e238]: game_entry
+          - text: at
+          - code [ref=f1e239]: $2970
+          - text: . Its complete source appears below. The raw payload is not meant to be BRUN at its staging address.
+        - heading "Code where there is code; bytes where there are pictures" [level=3] [ref=f1e240]
+        - paragraph [ref=f1e241]:
+          - text: Following calls, jumps, branches, and fallthrough from
+          - code [ref=f1e242]: $2970
+          - text: identifies
+          - strong [ref=f1e243]: 1,281 reachable instructions occupying 2,673 bytes
+          - text: . Another 11 bytes are two unreferenced instruction fragments. The remaining 7,044 bytes are retained data and padding. The source therefore does not mistake rows of scenery pixels for executable opcodes.
+        - paragraph [ref=f1e244]:
+          - text: Medium and large traffic sprites use
+          - code [ref=f1e245]: $FF
+          - text: row terminators. Player sprites use zero for transparency. Title and game-over images retain every byte of their 1 KB page layouts, including screen holes. These live in readable
+          - code [ref=f1e246]: .byte
+          - text: includes; the build has no
+          - code [ref=f1e247]: INCBIN
+          - text: dependency.
+        - heading "A crash is a nonlocal jump" [level=3] [ref=f1e248]
+        - paragraph [ref=f1e249]:
+          - text: The collision checker is called with JSR, but on a collision it jumps directly to
+          - code [ref=f1e250]: handle_crash
+          - text: . The handler starts with two PLA instructions to remove that return address from the stack. After the animation it continues into the next-car path. Rewriting it as an ordinary returning subroutine would change the program’s control flow.
+        - code [ref=f1e252]: "check_player_collision: ; ... test the player footprint ... jmp handle_crash handle_crash: pla ; discard collision checker return address, low byte pla ; discard high byte ; ... draw crash frames and delay ... jmp lose_car_and_restart"
+        - heading "What the comments do—and do not—claim" [level=3] [ref=f1e253]
+        - paragraph [ref=f1e254]:
+          - text: Names such as
+          - code [ref=f1e255]: draw_road
+          - text: and
+          - code [ref=f1e256]: update_brake
+          - text: describe recovered behavior, not original author labels. Uncertain visual details are identified as such. The source also preserves an unusual CMP/STA sequence in the first traffic car’s lookup setup at
+          - code [ref=f1e257]: $0A0A–$0A0D
+          - text: ", and labels two unreferenced fragments at"
+          - code [ref=f1e258]: $09AB–$09B2
+          - text: and
+          - code [ref=f1e259]: $295F–$2961
+          - text: . This disassembly adds no further gameplay repairs.
+        - paragraph [ref=f1e260]: Address assertions keep the fixed layout honest. Same-size instruction and data edits are straightforward; inserting bytes requires accommodating them in padding and checking the fixed-address assumptions. The source’s address/byte comments describe the baseline.
+      - generic [ref=f1e261]:
+        - heading "7. What has been verified" [level=2] [ref=f1e262]
+        - list [ref=f1e263]:
+          - listitem [ref=f1e264]: The assembled 9,728-byte payload matches all 1,216 rows of the corrected monitor dump.
+          - listitem [ref=f1e265]: The assembled 44-byte stub matches the repaired BASIC DATA line, and the generated BASIC listing is identical.
+          - listitem [ref=f1e266]: The entire rebuilt 143,360-byte disk matches the working repaired disk, including its filesystem layout.
+          - listitem [ref=f1e267]: Two separate clean source-only builds produced the same disk. A one-byte source-edit probe reached both the binary and the disk; the baseline was restored afterward.
+          - listitem [ref=f1e268]: The repaired disk booted automatically in Apple2TS. In MAME 0.285 on an unenhanced IIe, 575 gameplay updates exercised both steering directions, curves, braking, brake burnout, ten collisions, and game over. Restart preserved the high score, followed by another 80 gameplay updates.
+        - paragraph [ref=f1e269]: The disassembly build reproduces that exact disk, so it reuses the earlier emulator results. No new emulator run was performed for the source reconstruction or this HTML edition, and a physical-machine test is not claimed.
+        - paragraph [ref=f1e270]:
+          - link "Build comparison results" [ref=f1e271] [cursor=pointer]:
+            - /url: reference/build-verification.json
+          - text: ·
+          - link "Runtime test results" [ref=f1e272] [cursor=pointer]:
+            - /url: reference/runtime-verification.json
+        - paragraph [ref=f1e273]:
+          - strong [ref=f1e274]: "Disk SHA-256:"
+          - code [ref=f1e275]: d8c17629896d4e4533bac5c8f3a5b812dc6e0ee19838069e961794338ee57262
+      - generic [ref=f1e276]:
+        - heading "8. Complete source listings" [level=2] [ref=f1e277]
+        - paragraph [ref=f1e278]: "Open a listing to read it here, or download the complete package with all includes, linker configurations, Makefile, BASIC template, and packaging scripts. Everything on this page works from local files: no JavaScript, web fonts, or external assets are required."
+        - paragraph [ref=f1e279]:
+          - link "Complete source ZIP" [ref=f1e280] [cursor=pointer]:
+            - /url: downloads/crowded-speedway-source.zip
+          - text: ·
+          - link "Routine and coverage index" [ref=f1e281] [cursor=pointer]:
+            - /url: source/src/coverage.json
+          - text: ·
+          - link "Detailed reconstruction notes" [ref=f1e282] [cursor=pointer]:
+            - /url: reference/disassembly-notes.md
+        - group [ref=f1e283]:
+          - generic "Complete annotated game disassembly — src/speedway.s" [ref=f1e284] [cursor=pointer]
+        - group [ref=f1e285]:
+          - generic "Zero-page variables, hardware, and ROM symbols — src/memory.inc" [ref=f1e286] [cursor=pointer]
+        - group [ref=f1e287]:
+          - generic "Complete relocation loader — src/loader.s" [ref=f1e288] [cursor=pointer]
+        - group [ref=f1e289]:
+          - generic "Game linker configuration — src/speedway.cfg" [ref=f1e290] [cursor=pointer]
+        - group [ref=f1e291]:
+          - generic "Loader linker configuration — src/loader.cfg" [ref=f1e292] [cursor=pointer]
+        - heading "Graphics, HUD, and retained data" [level=3] [ref=f1e293]
+        - paragraph [ref=f1e294]: These are the exact byte declarations used by the assembler. Screen holes, row terminators, and unused tails are retained.
+        - group [ref=f1e295]:
+          - generic "crash-sprites.inc" [ref=f1e296] [cursor=pointer]
+        - group [ref=f1e297]:
+          - generic "hud-and-overlay.inc" [ref=f1e298] [cursor=pointer]
+        - group [ref=f1e299]:
+          - generic "initial-screen.inc" [ref=f1e300] [cursor=pointer]
+        - group [ref=f1e301]:
+          - generic "player-sprites.inc" [ref=f1e302] [cursor=pointer]
+        - group [ref=f1e303]:
+          - generic "scenery.inc" [ref=f1e304] [cursor=pointer]
+        - group [ref=f1e305]:
+          - generic "screen-pages.inc" [ref=f1e306] [cursor=pointer]
+        - group [ref=f1e307]:
+          - generic "start-overlay.inc" [ref=f1e308] [cursor=pointer]
+        - group [ref=f1e309]:
+          - generic "traffic-sprites.inc" [ref=f1e310] [cursor=pointer]
+        - heading "Packaging and verification scripts" [level=3] [ref=f1e311]
+        - group [ref=f1e312]:
+          - generic "tools/package_disk.py" [ref=f1e313] [cursor=pointer]
+        - group [ref=f1e314]:
+          - generic "tools/verify_build.py" [ref=f1e315] [cursor=pointer]
+        - heading "Applesoft startup" [level=3] [ref=f1e316]
+        - paragraph [ref=f1e317]:
+          - text: This is the repaired loader generated by the build. Its DATA bytes come from
+          - code [ref=f1e318]: src/loader.s
+          - text: ; the editable template is
+          - link [ref=f1e319] [cursor=pointer]:
+            - /url: source/src/speedway-run.bas.in
+            - code [ref=f1e320]: speedway-run.bas.in
+          - text: . The boot program is
+          - link [ref=f1e321] [cursor=pointer]:
+            - /url: source/src/hello.bas
+            - code [ref=f1e322]: HELLO
+          - text: .
+        - code [ref=f1e324]: "100 HOME 110 VTAB 12: HTAB 14: PRINT \"JUST A MOMENT\" 120 PRINT CHR$ (4);\"BLOAD CROWDED SPEED WAY,A$4400\" 130 FOR I = 768 TO 811 140 READ A 150 POKE I,A 160 NEXT 170 GR 180 CALL 768 190 DATA 169, 0, 133, 60, 169, 68, 133, 61, 169, 255, 133, 62, 169, 105, 133, 63, 169, 0, 133, 66, 169, 4, 133, 67, 160, 0, 32, 44, 254, 160, 10, 169, 255, 32, 168, 252, 136, 192, 0, 208, 246, 76, 112, 41"
+      - generic [ref=f1e325]:
+        - heading "Sources and editorial notes" [level=2] [ref=f1e326]
+        - paragraph [ref=f1e327]: This is a revised English reading and programming edition of the December 1984 article, printed pages 88–97, based on the existing restoration. The original title, editorial credit, rules, GR explanation, two-listing workflow, and earlier Japanese attribution come from that source. The page replaces the long monitor-type-in presentation with a repaired, annotated ca65 reconstruction and a reproducible build.
+        - paragraph [ref=f1e328]: The magazine image above is a crop from printed page 88. The two colour captures come from the repaired program running in MAME. Their vertical display scale is corrected in the page layout; the original PNG files are unchanged. Modern source comments, repair notes, memory labels, test results, and build instructions are editorial additions.
+        - paragraph [ref=f1e329]:
+          - link "Original restored Korean article and listings" [ref=f1e330] [cursor=pointer]:
+            - /url: reference/original-article.txt
+          - text: ·
+          - link "Raw title capture" [ref=f1e331] [cursor=pointer]:
+            - /url: images/title.png
+          - text: ·
+          - link "Raw gameplay capture" [ref=f1e332] [cursor=pointer]:
+            - /url: images/gameplay.png
+        - paragraph [ref=f1e333]:
+          - text: The archive itself remains unchanged. This edition and its bundled files are confined to
+          - code [ref=f1e334]: tmp/docs/
+          - text: .
+  - contentinfo [ref=f1e335]:
+    - paragraph [ref=f1e336]:
+      - text: Crowded Speedway · December 1984 / revised 2026 ·
+      - link "Back to the top" [ref=f1e337] [cursor=pointer]:
+        - /url: "#top"

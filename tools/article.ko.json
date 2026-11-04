@@ -1,0 +1,626 @@
+[
+  {
+    "source": "Crowded Speedway — December 1984, revisited",
+    "translation": "크라우디드 스피드 웨이 — 1984년 12월호를 다시 읽다"
+  },
+  {
+    "source": "December 1984 · Apple II · pp. 88–97",
+    "translation": "1984년 12월호 · Apple II · 88–97쪽"
+  },
+  {
+    "source": "Crowded Speedway",
+    "translation": "크라우디드 스피드 웨이"
+  },
+  {
+    "source": "A magazine listing, back on the road.",
+    "translation": "잡지 속 프로그램, 다시 도로 위로."
+  },
+  {
+    "source": "Original title: <span lang=\"ko\">크라우디드 스피드 웨이</span><br>\nOriginal credit: <span lang=\"ko\">편집부 편역</span> — editorial translation and adaptation.<br>\nRevised English edition with recovered source and build notes · 4 November 2026",
+    "translation": "원제: <span lang=\"ko\">크라우디드 스피드 웨이</span><br>원문 크레디트: <span lang=\"ko\">편집부 편역</span><br>복원 소스와 빌드 설명을 덧붙인 한국어 개정판 · 2026년 11월 4일"
+  },
+  {
+    "source": "A road full of cars, a paddle in your hand, and one brake you cannot afford to burn out. This December 1984 Apple II game makes a convincing race from low-resolution graphics. Here is the article revisited, with a working disk, fresh screenshots, and assembly source you can build with the cc65 tools.",
+    "translation": "도로를 빼곡히 메운 차들, 손에 쥔 패들, 그리고 한 번 타 버리면 다시 쓸 수 없는 브레이크. 1984년 12월호에 실린 이 Apple II 게임은 저해상도 그래픽만으로도 제법 그럴듯한 레이스를 펼쳐 보인다. 실행 가능한 디스크와 화면 사진, cc65 도구로 빌드할 수 있는 어셈블리 소스를 곁들여 그 기사를 다시 읽어 본다."
+  },
+  {
+    "source": "On the road again. A capture from the repaired program running on MAME’s unenhanced Apple IIe. The raw 560 × 192 capture is displayed with doubled vertical scale.",
+    "translation": "다시 도로 위로. 수정한 프로그램을 MAME의 초기형 Apple IIe(6502)에서 실행한 화면이다. 원본 캡처는 560 × 192이며, 여기서는 세로 비율을 두 배로 늘려 표시했다."
+  },
+  {
+    "source": "<a href=\"downloads/speedway.dsk\" download>Download the bootable disk</a> · <a href=\"downloads/crowded-speedway-source.zip\" download>Download the complete source package</a>",
+    "translation": "<a href=\"downloads/speedway.dsk\" download>부팅 디스크 내려받기</a> · <a href=\"downloads/crowded-speedway-source.zip\" download>전체 소스 패키지 내려받기</a>"
+  },
+  {
+    "source": "<a href=\"#race\">1. The race</a>",
+    "translation": "<a href=\"#race\">1. 만원사례의 고속도로</a>"
+  },
+  {
+    "source": "<a href=\"#run\">2. Run it on an Apple II</a>",
+    "translation": "<a href=\"#run\">2. Apple II에서 실행하기</a>"
+  },
+  {
+    "source": "<a href=\"#machine\">3. How the program works</a>",
+    "translation": "<a href=\"#machine\">3. 프로그램의 동작 원리</a>"
+  },
+  {
+    "source": "<a href=\"#repairs\">4. From printed bytes to working code</a>",
+    "translation": "<a href=\"#repairs\">4. 인쇄된 바이트에서 실행되는 코드로</a>"
+  },
+  {
+    "source": "<a href=\"#build\">5. Build it with cc65</a>",
+    "translation": "<a href=\"#build\">5. cc65로 빌드하기</a>"
+  },
+  {
+    "source": "<a href=\"#reading\">6. Reading the disassembly</a>",
+    "translation": "<a href=\"#reading\">6. 디스어셈블리 읽기</a>"
+  },
+  {
+    "source": "<a href=\"#checks\">7. What has been verified</a>",
+    "translation": "<a href=\"#checks\">7. 어디까지 검증했는가</a>"
+  },
+  {
+    "source": "<a href=\"#source\">8. Complete source listings</a>",
+    "translation": "<a href=\"#source\">8. 전체 소스 목록</a>"
+  },
+  {
+    "source": "<a href=\"#provenance\">Sources and editorial notes</a>",
+    "translation": "<a href=\"#provenance\">출처와 편집에 관한 설명</a>"
+  },
+  {
+    "source": "1. The race",
+    "translation": "1. 만원사례의 고속도로"
+  },
+  {
+    "source": "The original editors describe a race around Jeju Island, with Hallasan in the background. The highway is crowded: cars approach along the road, large signs loom at its edges, and a sharp curve can suddenly leave the car badly placed. The scenery moves with the road and your steering, helping a small block-graphics display feel like a much wider world.",
+    "translation": "원 기사는 한라산을 배경으로 제주도를 일주하는 경주라고 소개한다. 고속도로에는 차가 밀려들고, 길 가장자리에는 커다란 간판이 나타난다. 급커브를 만나면 어느새 차가 엉뚱한 위치에 놓이기도 한다. 도로와 조작에 맞추어 배경까지 움직이니, 작은 블록 그래픽 화면 너머로 훨씬 넓은 풍경이 펼쳐지는 느낌이다."
+  },
+  {
+    "source": "You need paddle 0 or the horizontal axis of an Apple II joystick. Press button 0 at the title screen to begin. During the race, that same button is the brake. Use it in short bursts to make room among the traffic. Keep it held down and the brake will burn out; it then stays unusable for the rest of the game.",
+    "translation": "패들 0번이나 Apple II 조이스틱의 가로축이 필요하다. 타이틀 화면에서 0번 버튼을 누르면 출발한다. 주행 중에는 같은 버튼이 브레이크다. 짧게 끊어 밟아 밀려오는 차 사이에 여유를 만들자. 계속 누르고 있으면 브레이크가 타 버려, 게임이 끝날 때까지 다시 쓸 수 없게 된다."
+  },
+  {
+    "source": "The score rises as you drive and stops rising while the working brake is held. You have ten cars to use up. After a collision the program flashes an explosion, reduces the allowance, and puts you back on the road. At game over it compares the score with the high score, then lets you start again.",
+    "translation": "달리는 동안에는 점수가 오르지만, 정상적으로 작동하는 브레이크를 밟고 있을 때에는 오르지 않는다. 쓸 수 있는 차는 모두 열 대다. 충돌하면 폭발 장면이 번쩍이고 남은 차가 줄어든 뒤 다시 도로로 돌아온다. 차를 모두 쓰면 현재 점수와 최고 점수를 비교하고, 새 게임을 시작할 수 있게 한다."
+  },
+  {
+    "source": "The starting line as photographed in the December 1984 article, printed page 88. This is a scan crop from the restored source.",
+    "translation": "1984년 12월호 88쪽에 실린 출발선 사진. 복원 자료의 스캔 이미지에서 해당 부분을 잘라 낸 것이다."
+  },
+  {
+    "source": "The repaired game’s title screen in MAME. “PUSH SW0” means paddle/joystick button 0. As above, the capture is displayed at twice its raw vertical scale.",
+    "translation": "수정한 게임의 타이틀 화면을 MAME에서 캡처했다. “PUSH SW0”는 패들 또는 조이스틱의 0번 버튼을 누르라는 뜻이다. 위 화면과 마찬가지로 원본 캡처의 세로 비율을 두 배로 표시했다."
+  },
+  {
+    "source": "The 1984 article credits an earlier appearance in the January 1983 issue of Japan’s <cite>ASCII</cite>. That attribution is reported here from the Korean article; the earlier Japanese publication has not been independently checked for this edition.",
+    "translation": "1984년 기사는 이 프로그램이 일본 <cite>ASCII</cite> 1983년 1월호에 소개되었다고 밝힌다. 여기서는 한국어 원문의 설명을 옮겼으며, 이 개정판을 만들면서 앞선 일본어 기사를 별도로 대조하지는 않았다."
+  },
+  {
+    "source": "2. Run it on an Apple II",
+    "translation": "2. Apple II에서 실행하기"
+  },
+  {
+    "source": "The supplied image is a bootable 140 KB DOS 3.3 disk in DOS sector order. Mount it as drive 1 and boot. Its <code>HELLO</code> program automatically runs <code>SPEEDWAY-RUN</code>. If DOS is already running with the disk mounted, enter:",
+    "translation": "제공하는 이미지는 DOS 섹터 순서로 저장한 140 KB DOS 3.3 부팅 디스크다. 1번 드라이브에 넣고 부팅하면 <code>HELLO</code>가 자동으로 <code>SPEEDWAY-RUN</code>을 실행한다. 디스크를 넣은 상태에서 이미 DOS가 실행 중이라면 다음과 같이 입력한다."
+  },
+  {
+    "source": "Use an Apple II with Applesoft ROMs and at least 48 KB of RAM: an II+, IIe, or compatible machine. Run at normal Apple II speed, about 1 MHz. On a real machine, transfer the image to a 5.25-inch floppy or use a compatible disk-image interface; placing a <code>.dsk</code> file inside a DOS filesystem does not turn it into a boot disk.",
+    "translation": "Applesoft ROM과 48 KB 이상의 RAM을 갖춘 Apple II가 필요하다. II+, IIe 또는 호환 기종을 사용하고, 속도는 약 1 MHz의 원래 Apple II 속도로 맞춘다. 실기에서는 이미지를 5.25인치 플로피로 전송하거나 호환되는 디스크 이미지 장치를 사용한다. DOS 파일 시스템 안에 <code>.dsk</code> 파일을 복사하는 것만으로는 부팅 디스크가 되지 않는다."
+  },
+  {
+    "source": "<strong>Check the paddle’s centre.</strong> The original code regards raw paddle readings 48–79 as neutral, with 64 a useful target. Lower values steer left; higher values steer right. An emulator that centres the input at 128 will pull right continuously. Adjust the emulated paddle position or range, or the physical joystick’s trim.",
+    "translation": "<strong>패들의 중립 위치를 확인하자.</strong> 원래 코드는 패들 입력값 48–79를 중립으로 취급하므로, 64 정도가 적당하다. 이보다 낮으면 왼쪽, 높으면 오른쪽으로 조향한다. 입력 중심이 128인 에뮬레이터에서는 차가 계속 오른쪽으로 쏠린다. 에뮬레이터의 패들 위치나 입력 범위, 또는 실제 조이스틱의 중심 조절 장치를 맞추어야 한다."
+  },
+  {
+    "source": "The brief orchard picture at startup belongs to the program: the loader copies it into screen memory, waits, and then starts the game. The move also overwrites Applesoft’s program area. A reset does not leave the BASIC listing intact; reboot to start cleanly.",
+    "translation": "시작할 때 잠깐 보이는 사과밭 그림도 프로그램의 일부다. 로더가 이 그림을 화면 메모리에 복사하고 잠시 기다린 뒤 게임을 시작한다. 이 메모리 이동은 Applesoft의 프로그램 영역도 덮어쓴다. 리셋해도 BASIC 목록이 그대로 남아 있지는 않으므로, 다시 시작할 때에는 재부팅하는 편이 확실하다."
+  },
+  {
+    "source": "3. How the program works",
+    "translation": "3. 프로그램의 동작 원리"
+  },
+  {
+    "source": "Low resolution, a wide road",
+    "translation": "저해상도로 그리는 넓은 도로"
+  },
+  {
+    "source": "The article makes a point of using <code>GR</code> rather than high-resolution graphics. In mixed mode the Apple II gives it a 40 × 40 graphics area with four text lines below. Most of the convincing depth comes from the arrangement of the data and the way it is copied.",
+    "translation": "원 기사는 고해상도 대신 <code>GR</code>을 사용한다는 점을 강조한다. Apple II의 혼합 모드에서는 40 × 40 그래픽 영역 아래에 네 줄의 문자를 표시할 수 있다. 그 작은 화면에서 깊이감을 만드는 비결은 데이터의 배치와 복사 방법에 있다."
+  },
+  {
+    "source": "At startup the program calculates perspective and lane tables in <code>$4000–$53FF</code>. During play it builds twenty separate 256-byte rows in <code>$6000–$73FF</code>. The road is a span of <code>$AA</code> bytes on a <code>$CC</code> background. Traffic, signs, and the player’s car are added to those rows before a 40-column window is copied to the display.",
+    "translation": "시작할 때 프로그램은 <code>$4000–$53FF</code>에 원근과 차선 위치를 위한 표를 계산해 둔다. 주행 중에는 <code>$6000–$73FF</code>에 각각 256바이트인 행 버퍼 스무 개를 만든다. 도로는 <code>$CC</code> 배경 위에 <code>$AA</code> 바이트를 일정 구간 채워 그린다. 여기에 다른 차와 간판, 플레이어의 차를 얹은 뒤 40열 너비의 창을 실제 화면으로 복사한다."
+  },
+  {
+    "source": "Each lores display byte contains two vertically adjacent colour pixels. The road blitter combines the low nibble of one row buffer with the high nibble of the next, then writes to the Apple II’s interleaved screen addresses. Ten separate 256-byte scenery strips provide the horizon and roadside view. Moving their source index makes the landscape scroll.",
+    "translation": "저해상도 화면의 한 바이트에는 위아래로 붙은 색상 픽셀 두 개가 들어간다. 도로 전송 루틴은 한 행 버퍼의 하위 니블과 다음 행의 상위 니블을 합친 뒤, Apple II 특유의 교차 배치된 화면 주소에 써 넣는다. 별도로 마련한 256바이트짜리 배경 띠 열 개는 지평선과 길가 풍경을 담당한다. 이 띠를 읽는 위치를 바꾸면 풍경이 스크롤된다."
+  },
+  {
+    "source": "The game loop",
+    "translation": "게임 루프"
+  },
+  {
+    "source": "The recovered loop is short enough to show the order of work. Collision is tested before the player’s car is drawn, so the car’s own pixels do not become obstacles. The road and scenery are copied to the screen only after the row buffers are ready.",
+    "translation": "복원한 루프는 작업 순서를 한눈에 볼 수 있을 만큼 짧다. 플레이어의 차를 그리기 전에 충돌을 검사하므로, 자기 차의 픽셀을 장애물로 오인하지 않는다. 도로와 배경은 행 버퍼의 준비가 끝난 뒤 화면에 복사한다."
+  },
+  {
+    "source": "At <code>update_brake</code>, a working brake subtracts one from the text-based score. The unconditional increment at the end of the loop adds it back, cancelling the usual increase. Score digits are high-bit Apple II characters, not packed BCD.",
+    "translation": "<code>update_brake</code>는 브레이크가 작동하는 동안 문자로 저장된 점수에서 1을 뺀다. 루프 끝에서 무조건 실행되는 점수 증가가 다시 1을 더하므로, 평소의 점수 상승이 상쇄된다. 점수는 패킹된 BCD가 아니라 최상위 비트가 켜진 Apple II 문자로 저장한다."
+  },
+  {
+    "source": "Where the program lives",
+    "translation": "메모리 배치"
+  },
+  {
+    "source": "Selected runtime regions after relocation",
+    "translation": "메모리를 옮긴 뒤의 주요 실행 주소"
+  },
+  {
+    "source": "Address",
+    "translation": "주소"
+  },
+  {
+    "source": "Use",
+    "translation": "용도"
+  },
+  {
+    "source": "<code>$0300–$032B</code>",
+    "translation": "<code>$0300–$032B</code>"
+  },
+  {
+    "source": "The 44-byte relocation and delay stub.",
+    "translation": "44바이트짜리 메모리 이동 및 지연 루틴."
+  },
+  {
+    "source": "<code>$0400–$07FF</code>",
+    "translation": "<code>$0400–$07FF</code>"
+  },
+  {
+    "source": "The initial orchard page, then the live screen.",
+    "translation": "처음에는 사과밭 그림, 이후에는 실제 화면으로 쓰이는 영역."
+  },
+  {
+    "source": "<code>$0800–$0FFF</code>",
+    "translation": "<code>$0800–$0FFF</code>"
+  },
+  {
+    "source": "Math, road/traffic routines, sprites, input, and blitters.",
+    "translation": "계산, 도로와 차량 처리, 스프라이트, 입력, 화면 전송 루틴."
+  },
+  {
+    "source": "<code>$1000–$19FF</code>",
+    "translation": "<code>$1000–$19FF</code>"
+  },
+  {
+    "source": "Ten horizontal scenery strips.",
+    "translation": "가로 방향 배경 띠 열 개."
+  },
+  {
+    "source": "<code>$1A00–$1FFF</code>",
+    "translation": "<code>$1A00–$1FFF</code>"
+  },
+  {
+    "source": "Steering, player/crash sprites, brake, main loop, HUD, and data.",
+    "translation": "조향, 플레이어 및 폭발 스프라이트, 브레이크, 메인 루프, HUD와 데이터."
+  },
+  {
+    "source": "<code>$2000–$27FF</code>",
+    "translation": "<code>$2000–$27FF</code>"
+  },
+  {
+    "source": "Game-over and title-screen pages.",
+    "translation": "게임 종료 화면과 타이틀 화면."
+  },
+  {
+    "source": "<code>$2800–$29FF</code>",
+    "translation": "<code>$2800–$29FF</code>"
+  },
+  {
+    "source": "Start overlay, signals, sounds, initialization, and restart.",
+    "translation": "출발 화면 장식, 신호등, 소리, 초기화 및 재시작 처리."
+  },
+  {
+    "source": "<code>$4000–$53FF</code>",
+    "translation": "<code>$4000–$53FF</code>"
+  },
+  {
+    "source": "Generated perspective and lane tables.",
+    "translation": "실행 중 생성하는 원근 및 차선 위치 표."
+  },
+  {
+    "source": "<code>$6000–$73FF</code>",
+    "translation": "<code>$6000–$73FF</code>"
+  },
+  {
+    "source": "Generated road/object row buffers.",
+    "translation": "실행 중 생성하는 도로와 물체의 행 버퍼."
+  },
+  {
+    "source": "The important zero-page variables are named in <a href=\"source/src/memory.inc\"><code>memory.inc</code></a>: curvature at <code>$00</code>, signed viewport offset at <code>$01</code>, scenery index at <code>$09</code>, road-section state at <code>$0A–$0D</code>, and brake state at <code>$0E–$10</code>. The two traffic cars use state at <code>$60–$68</code> and <code>$90–$98</code>; the signs use <code>$70–$75</code> and <code>$80–$85</code>.",
+    "translation": "주요 제로페이지 변수에는 <a href=\"source/src/memory.inc\"><code>memory.inc</code></a>에서 이름을 붙였다. <code>$00</code>은 도로 곡률, <code>$01</code>은 부호 있는 가로 시점 오프셋, <code>$09</code>는 배경 인덱스다. <code>$0A–$0D</code>에는 도로 구간의 상태를, <code>$0E–$10</code>에는 브레이크 상태를 저장한다. 다른 차량 두 대는 각각 <code>$60–$68</code>과 <code>$90–$98</code>을, 간판은 <code>$70–$75</code>와 <code>$80–$85</code>를 사용한다."
+  },
+  {
+    "source": "4. From printed bytes to working code",
+    "translation": "4. 인쇄된 바이트에서 실행되는 코드로"
+  },
+  {
+    "source": "The original procedure was to type an Applesoft loader, enter the long machine-code listing through the monitor, and save the payload at <code>$4400</code>. The restored article preserves what the pages say. A runnable edition needs a separate record of corrections, because a faithful transcription and a working program are different checks.",
+    "translation": "당시에는 Applesoft 로더를 입력한 다음 모니터에서 긴 기계어 목록을 입력하고, <code>$4400</code>부터 저장하는 방식이었다. 복원 기사는 인쇄된 내용을 그대로 보존한다. 실행판에는 수정 내역을 따로 남겨야 한다. 원문을 충실하게 옮겼는지와 프로그램이 실제로 실행되는지는 서로 다른 검증이기 때문이다."
+  },
+  {
+    "source": "Corrections included in this runnable edition",
+    "translation": "이 실행판에 반영한 수정 사항"
+  },
+  {
+    "source": "Location",
+    "translation": "위치"
+  },
+  {
+    "source": "Change",
+    "translation": "수정"
+  },
+  {
+    "source": "Reason",
+    "translation": "이유"
+  },
+  {
+    "source": "Dump <code>$4BA0–$50AF</code>",
+    "translation": "덤프 <code>$4BA0–$50AF</code>"
+  },
+  {
+    "source": "Restore 162 omitted rows.",
+    "translation": "빠진 162행을 복구했다."
+  },
+  {
+    "source": "The extracted hex file skipped 1,296 bytes. The supplied disk had 1,183 incorrect bytes in that range, including code and graphics.",
+    "translation": "추출한 16진수 파일에서 1,296바이트가 빠져 있었다. 처음 제공된 디스크의 해당 범위에는 코드와 그림을 포함해 1,183바이트가 잘못 들어 있었다."
+  },
+  {
+    "source": "Dump <code>$4993</code><br>Runtime <code>$0993</code>",
+    "translation": "덤프 <code>$4993</code><br>실행 주소 <code>$0993</code>"
+  },
+  {
+    "source": "<code>44 → A4</code>",
+    "translation": "<code>44 → A4</code>"
+  },
+  {
+    "source": "Restore <code>LDY $00</code> before the road-position lookup.",
+    "translation": "도로 위치 표를 읽기 전에 실행할 <code>LDY $00</code>을 복구했다."
+  },
+  {
+    "source": "Dump <code>$4F56</code><br>Runtime <code>$0F56</code>",
+    "translation": "덤프 <code>$4F56</code><br>실행 주소 <code>$0F56</code>"
+  },
+  {
+    "source": "<code>0B → 08</code>",
+    "translation": "<code>0B → 08</code>"
+  },
+  {
+    "source": "Call the random routine at <code>$08F0</code>, rather than sprite data at <code>$0BF0</code>.",
+    "translation": "스프라이트 데이터가 있는 <code>$0BF0</code> 대신 난수 루틴 <code>$08F0</code>을 호출하도록 했다."
+  },
+  {
+    "source": "Applesoft DATA loader",
+    "translation": "Applesoft DATA 로더"
+  },
+  {
+    "source": "End the move at <code>$69FF</code>.",
+    "translation": "이동 범위의 끝을 <code>$69FF</code>로 맞추었다."
+  },
+  {
+    "source": "ROM MOVE uses an inclusive end. The printed <code>$6A00</code> endpoint copied one extra byte.",
+    "translation": "ROM MOVE는 끝 주소의 바이트까지 복사한다. 인쇄된 <code>$6A00</code>을 쓰면 한 바이트를 더 복사하게 된다."
+  },
+  {
+    "source": "Disk startup",
+    "translation": "디스크 시작 처리"
+  },
+  {
+    "source": "Add <code>HELLO</code> and an explicit PRINT separator.",
+    "translation": "<code>HELLO</code>와 명시적인 PRINT 구분자를 추가했다."
+  },
+  {
+    "source": "The packaged disk boots directly into the repaired loader.",
+    "translation": "완성한 디스크로 부팅하면 수정한 로더가 바로 실행된다."
+  },
+  {
+    "source": "<strong>A note on the printed extra-cars tip.</strong> The article suggests changing the byte at <code>$5CD0</code> to an INC instruction. In this dump, that address contains crash-picture data. The actual decrement is at runtime <code>$1DC0</code>, corresponding to dump address <code>$5DC0</code>. This edition preserves the ten-car logic and does not claim to validate the printed extended-play modification.",
+    "translation": "<strong>원문에 실린 차량 수 늘리기 팁에 관하여.</strong> 기사는 <code>$5CD0</code>의 바이트를 INC 명령으로 바꾸라고 안내한다. 그러나 이 덤프에서 그 주소에는 폭발 그림 데이터가 있다. 실제 감소 명령은 실행 주소 <code>$1DC0</code>, 덤프 주소로는 <code>$5DC0</code>에 있다. 이 개정판은 열 대의 차를 쓰는 원래 동작을 유지하며, 인쇄된 장시간 플레이용 수정법을 검증했다고 주장하지 않는다."
+  },
+  {
+    "source": "The original filename spellings and uncertain source readings remain in the <a href=\"reference/original-article.txt\" hreflang=\"ko\">restored Korean article and hex listing</a>. This revised page consistently uses the working filenames <code>SPEEDWAY-RUN</code> and <code>CROWDED SPEED WAY</code>.",
+    "translation": "원래의 파일명 표기와 판독이 확실하지 않은 부분은 <a href=\"reference/original-article.txt\" hreflang=\"ko\">복원한 한국어 기사와 16진수 목록</a>에 남아 있다. 이 개정판에서는 실제로 실행되는 파일명인 <code>SPEEDWAY-RUN</code>과 <code>CROWDED SPEED WAY</code>를 일관되게 사용한다."
+  },
+  {
+    "source": "5. Build it with cc65",
+    "translation": "5. cc65로 빌드하기"
+  },
+  {
+    "source": "The modern version uses two tools from the cc65 suite: <strong>ca65</strong> assembles the 6502 source and <strong>ld65</strong> links it at its runtime addresses. No C compiler or C runtime is involved. Python 3 and <strong>a2kit</strong> generate the BASIC DATA line, tokenize the BASIC programs, and construct a fresh bootable DOS 3.3 disk.",
+    "translation": "이번 버전은 cc65 도구 모음 가운데 두 가지를 사용한다. <strong>ca65</strong>는 6502 소스를 어셈블하고, <strong>ld65</strong>는 실행 주소에 맞추어 링크한다. C 컴파일러나 C 런타임은 사용하지 않는다. Python 3과 <strong>a2kit</strong>은 BASIC DATA 행을 생성하고 BASIC 프로그램을 토큰화한 뒤, 새로운 DOS 3.3 부팅 디스크를 만든다."
+  },
+  {
+    "source": "Install GNU Make, ca65/ld65, Python 3, and a2kit so their executables are on your PATH. The build was verified with cc65 V2.19 (git a162565ec) and a2kit 4.4.2. Download <a href=\"downloads/crowded-speedway-source.zip\" download>the source package</a>, then:",
+    "translation": "GNU Make, ca65/ld65, Python 3, a2kit을 설치하고 실행 파일을 PATH에서 찾을 수 있게 한다. cc65 V2.19(git a162565ec)와 a2kit 4.4.2로 빌드를 검증했다. <a href=\"downloads/crowded-speedway-source.zip\" download>소스 패키지</a>를 내려받은 뒤 다음과 같이 실행한다."
+  },
+  {
+    "source": "The result is <code>build/speedway.dsk</code>. The archive includes repaired comparison files for <code>make verify</code>. The normal <code>make</code> target builds from <code>Makefile</code>, <code>src/</code>, and <code>tools/</code> alone; it does not extract an old binary or copy a base game disk. a2kit supplies the DOS boot tracks.",
+    "translation": "결과물은 <code>build/speedway.dsk</code>다. 패키지에는 <code>make verify</code>에 필요한 수정판 비교 파일도 들어 있다. 일반 <code>make</code> 빌드는 <code>Makefile</code>, <code>src/</code>, <code>tools/</code>만 읽으며, 예전 바이너리를 추출하거나 기존 게임 디스크를 복사하지 않는다. DOS 부팅 트랙은 a2kit이 제공한다."
+  },
+  {
+    "source": "In the original scratch workspace, the equivalent commands are:",
+    "translation": "원래의 임시 작업 공간에서는 다음 명령으로 같은 작업을 할 수 있다."
+  },
+  {
+    "source": "<code>make clean</code> removes only the project’s <code>build/</code> directory. <code>make binary</code> assembles the game and loader without packaging a disk. Executable paths can be overridden, for example <code>make CA65=/path/to/ca65</code>.",
+    "translation": "<code>make clean</code>은 프로젝트의 <code>build/</code> 디렉터리만 지운다. <code>make binary</code>는 디스크를 만들지 않고 게임과 로더만 어셈블한다. 실행 파일 경로는 <code>make CA65=/path/to/ca65</code>처럼 지정할 수 있다."
+  },
+  {
+    "source": "The Makefile",
+    "translation": "Makefile"
+  },
+  {
+    "source": "The BASIC DATA line is generated from the assembled <code>loader.bin</code>. Editing the loader’s assembly therefore changes the bytes that BASIC installs; there is no second hand-maintained byte list to keep in sync.",
+    "translation": "BASIC DATA 행은 어셈블한 <code>loader.bin</code>에서 자동으로 만든다. 따라서 로더의 어셈블리 소스를 고치면 BASIC이 설치하는 바이트도 함께 바뀐다. 바이트 목록을 따로 손으로 관리할 필요가 없다."
+  },
+  {
+    "source": "Complete Makefile",
+    "translation": "Makefile 전체"
+  },
+  {
+    "source": "<a href=\"source/Makefile\" download>Download Makefile</a> · <a href=\"source/tools/package_disk.py\" download>Disk packager</a> · <a href=\"source/tools/verify_build.py\" download>Reference verifier</a>",
+    "translation": "<a href=\"source/Makefile\" download>Makefile 내려받기</a> · <a href=\"source/tools/package_disk.py\" download>디스크 생성 스크립트</a> · <a href=\"source/tools/verify_build.py\" download>비교 검증 스크립트</a>"
+  },
+  {
+    "source": "6. Reading the disassembly",
+    "translation": "6. 디스어셈블리 읽기"
+  },
+  {
+    "source": "Assemble for the address where the code will run",
+    "translation": "실제로 실행할 주소를 기준으로 어셈블하기"
+  },
+  {
+    "source": "The payload is loaded at <code>$4400–$69FF</code>, but executed at <code>$0400–$29FF</code>. All source labels, branches, and absolute references use the second range. Add <code>$4000</code> to a runtime address to find its byte in the monitor dump.",
+    "translation": "프로그램은 <code>$4400–$69FF</code>에 읽어 들이지만, 실행할 때에는 <code>$0400–$29FF</code>에 있다. 모든 소스 레이블과 분기, 절대주소 참조는 실행 주소를 기준으로 한다. 모니터 덤프에서 해당 바이트를 찾으려면 실행 주소에 <code>$4000</code>을 더하면 된다."
+  },
+  {
+    "source": "The separate loader at <code>$0300</code> sets the monitor’s source, end, and destination pointers, calls MOVE at <code>$FE2C</code>, delays, and jumps to <code>game_entry</code> at <code>$2970</code>. Its complete source appears below. The raw payload is not meant to be BRUN at its staging address.",
+    "translation": "별도로 <code>$0300</code>에 설치하는 로더는 모니터의 원본·끝·목적지 포인터를 설정하고, <code>$FE2C</code>의 MOVE를 호출한 뒤 잠시 기다렸다가 <code>$2970</code>의 <code>game_entry</code>로 이동한다. 전체 소스는 아래에 수록했다. 원시 바이너리를 처음 적재한 주소에서 곧바로 BRUN하는 용도는 아니다."
+  },
+  {
+    "source": "Code where there is code; bytes where there are pictures",
+    "translation": "코드는 명령어로, 그림은 데이터로"
+  },
+  {
+    "source": "Following calls, jumps, branches, and fallthrough from <code>$2970</code> identifies <strong>1,281 reachable instructions occupying 2,673 bytes</strong>. Another 11 bytes are two unreferenced instruction fragments. The remaining 7,044 bytes are retained data and padding. The source therefore does not mistake rows of scenery pixels for executable opcodes.",
+    "translation": "<code>$2970</code>에서 시작해 호출, 점프, 분기와 순차 실행을 따라가면 <strong>도달 가능한 명령어 1,281개, 총 2,673바이트</strong>를 확인할 수 있다. 이 밖에 참조하는 곳을 찾지 못한 명령어 조각 두 개가 11바이트를 차지한다. 나머지 7,044바이트는 보존한 데이터와 패딩이다. 배경 그림의 픽셀을 실행 가능한 명령어로 잘못 해석하지 않도록 구분했다."
+  },
+  {
+    "source": "Medium and large traffic sprites use <code>$FF</code> row terminators. Player sprites use zero for transparency. Title and game-over images retain every byte of their 1 KB page layouts, including screen holes. These live in readable <code>.byte</code> includes; the build has no <code>INCBIN</code> dependency.",
+    "translation": "중간 크기와 큰 크기의 차량 스프라이트는 <code>$FF</code>를 행 종료 표시로 사용한다. 플레이어 스프라이트에서는 0이 투명색이다. 타이틀과 게임 종료 그림은 화면의 미사용 구멍 영역까지 포함해 1 KB 페이지의 모든 바이트를 보존했다. 데이터는 읽을 수 있는 <code>.byte</code> 선언으로 수록했으며, 빌드는 <code>INCBIN</code>에 의존하지 않는다."
+  },
+  {
+    "source": "A crash is a nonlocal jump",
+    "translation": "충돌 처리는 호출한 자리로 돌아가지 않는다"
+  },
+  {
+    "source": "The collision checker is called with JSR, but on a collision it jumps directly to <code>handle_crash</code>. The handler starts with two PLA instructions to remove that return address from the stack. After the animation it continues into the next-car path. Rewriting it as an ordinary returning subroutine would change the program’s control flow.",
+    "translation": "충돌 검사 루틴은 JSR로 호출하지만, 충돌하면 바로 <code>handle_crash</code>로 점프한다. 이 처리기는 PLA 두 번으로 스택에서 복귀 주소를 제거한다. 애니메이션이 끝나면 다음 차를 준비하는 경로로 이어진다. 이를 보통의 복귀형 서브루틴으로 바꾸면 프로그램의 제어 흐름이 달라진다."
+  },
+  {
+    "source": "What the comments do—and do not—claim",
+    "translation": "주석으로 설명한 것과 아직 알 수 없는 것"
+  },
+  {
+    "source": "Names such as <code>draw_road</code> and <code>update_brake</code> describe recovered behavior, not original author labels. Uncertain visual details are identified as such. The source also preserves an unusual CMP/STA sequence in the first traffic car’s lookup setup at <code>$0A0A–$0A0D</code>, and labels two unreferenced fragments at <code>$09AB–$09B2</code> and <code>$295F–$2961</code>. This disassembly adds no further gameplay repairs.",
+    "translation": "<code>draw_road</code>, <code>update_brake</code> 같은 이름은 복원 과정에서 파악한 동작을 설명하기 위한 것으로, 원저자의 레이블이 아니다. 그림의 의미가 확실하지 않은 부분은 그렇게 표시했다. 첫 번째 차량의 조회 포인터 설정부 <code>$0A0A–$0A0D</code>에 있는 특이한 CMP/STA 조합도 그대로 두었고, 참조하는 곳을 찾지 못한 <code>$09AB–$09B2</code>와 <code>$295F–$2961</code>의 명령어 조각에는 따로 이름을 붙였다. 이번 디스어셈블리 작업에서는 게임 동작을 더 고치지 않았다."
+  },
+  {
+    "source": "Address assertions keep the fixed layout honest. Same-size instruction and data edits are straightforward; inserting bytes requires accommodating them in padding and checking the fixed-address assumptions. The source’s address/byte comments describe the baseline.",
+    "translation": "주소 검증문은 고정된 배치가 어긋나지 않도록 지켜 준다. 같은 크기의 명령어나 데이터를 바꾸는 일은 간단하지만, 바이트를 끼워 넣으려면 패딩을 조정하고 고정 주소에 대한 가정을 확인해야 한다. 소스에 적힌 주소와 바이트 주석은 기준 버전의 값이다."
+  },
+  {
+    "source": "7. What has been verified",
+    "translation": "7. 어디까지 검증했는가"
+  },
+  {
+    "source": "The assembled 9,728-byte payload matches all 1,216 rows of the corrected monitor dump.",
+    "translation": "어셈블한 9,728바이트 프로그램이 수정한 모니터 덤프 1,216행 전체와 일치한다."
+  },
+  {
+    "source": "The assembled 44-byte stub matches the repaired BASIC DATA line, and the generated BASIC listing is identical.",
+    "translation": "어셈블한 44바이트 로더가 수정판 BASIC DATA 행과 일치하며, 생성한 BASIC 목록도 동일하다."
+  },
+  {
+    "source": "The entire rebuilt 143,360-byte disk matches the working repaired disk, including its filesystem layout.",
+    "translation": "다시 만든 143,360바이트 디스크 전체가 파일 시스템 배치까지 포함해 정상 동작한 수정판 디스크와 일치한다."
+  },
+  {
+    "source": "Two separate clean source-only builds produced the same disk. A one-byte source-edit probe reached both the binary and the disk; the baseline was restored afterward.",
+    "translation": "소스만 넣은 빈 디렉터리 두 곳에서 각각 빌드해 같은 디스크를 얻었다. 소스의 한 바이트를 바꾸는 시험에서도 바이너리와 디스크에 변경이 반영되는 것을 확인했고, 시험 후 기준 버전으로 되돌렸다."
+  },
+  {
+    "source": "The repaired disk booted automatically in Apple2TS. In MAME 0.285 on an unenhanced IIe, 575 gameplay updates exercised both steering directions, curves, braking, brake burnout, ten collisions, and game over. Restart preserved the high score, followed by another 80 gameplay updates.",
+    "translation": "수정한 디스크는 Apple2TS에서 자동 부팅되었다. MAME 0.285의 초기형 IIe에서는 게임 루프를 575회 진행하며 좌우 조향, 커브, 제동, 브레이크 소진, 열 번의 충돌과 게임 종료를 확인했다. 재시작 후에도 최고 점수가 유지되었고, 이어서 루프를 80회 더 진행했다."
+  },
+  {
+    "source": "The disassembly build reproduces that exact disk, so it reuses the earlier emulator results. No new emulator run was performed for the source reconstruction or this HTML edition, and a physical-machine test is not claimed.",
+    "translation": "디스어셈블리 빌드 결과가 그 디스크와 완전히 같으므로 앞서 얻은 에뮬레이터 검증 결과를 그대로 적용한다. 소스 재구성과 이 HTML판을 만들면서 에뮬레이터를 새로 실행하지는 않았으며, 실제 기계에서 시험했다고 주장하지도 않는다."
+  },
+  {
+    "source": "<a href=\"reference/build-verification.json\">Build comparison results</a> · <a href=\"reference/runtime-verification.json\">Runtime test results</a>",
+    "translation": "<a href=\"reference/build-verification.json\">빌드 비교 결과</a> · <a href=\"reference/runtime-verification.json\">실행 검증 결과</a>"
+  },
+  {
+    "source": "<strong>Disk SHA-256:</strong><br><code>d8c17629896d4e4533bac5c8f3a5b812dc6e0ee19838069e961794338ee57262</code>",
+    "translation": "<strong>디스크 SHA-256:</strong><br><code>d8c17629896d4e4533bac5c8f3a5b812dc6e0ee19838069e961794338ee57262</code>"
+  },
+  {
+    "source": "8. Complete source listings",
+    "translation": "8. 전체 소스 목록"
+  },
+  {
+    "source": "Open a listing to read it here, or download the complete package with all includes, linker configurations, Makefile, BASIC template, and packaging scripts. Everything on this page works from local files: no JavaScript, web fonts, or external assets are required.",
+    "translation": "목록을 펼치면 이 페이지에서 바로 읽을 수 있다. 인클루드 파일, 링커 설정, Makefile, BASIC 템플릿과 디스크 생성 스크립트를 묶은 전체 패키지를 내려받아도 된다. 이 페이지는 로컬 파일만으로 동작하며 JavaScript나 웹 폰트, 외부 리소스가 필요하지 않다. 소스의 명령어·레이블·주석과 빌드 명령은 영문판의 빌드 가능한 원문을 그대로 수록했다."
+  },
+  {
+    "source": "<a href=\"downloads/crowded-speedway-source.zip\" download>Complete source ZIP</a> · <a href=\"source/src/coverage.json\">Routine and coverage index</a> · <a href=\"reference/disassembly-notes.md\">Detailed reconstruction notes</a>",
+    "translation": "<a href=\"downloads/crowded-speedway-source.zip\" download>전체 소스 ZIP</a> · <a href=\"source/src/coverage.json\">루틴 및 코드 분류 색인</a> · <a href=\"reference/disassembly-notes.md\">상세 재구성 설명(영문)</a>"
+  },
+  {
+    "source": "Complete annotated game disassembly — src/speedway.s",
+    "translation": "주석을 붙인 게임 디스어셈블리 전체 — src/speedway.s"
+  },
+  {
+    "source": "<a href=\"source/src/speedway.s\" download>Download this file</a>",
+    "translation": "<a href=\"source/src/speedway.s\" download>파일 내려받기</a>"
+  },
+  {
+    "source": "Zero-page variables, hardware, and ROM symbols — src/memory.inc",
+    "translation": "제로페이지 변수, 하드웨어 및 ROM 심벌 — src/memory.inc"
+  },
+  {
+    "source": "<a href=\"source/src/memory.inc\" download>Download this file</a>",
+    "translation": "<a href=\"source/src/memory.inc\" download>파일 내려받기</a>"
+  },
+  {
+    "source": "Complete relocation loader — src/loader.s",
+    "translation": "메모리 이동 로더 전체 — src/loader.s"
+  },
+  {
+    "source": "<a href=\"source/src/loader.s\" download>Download this file</a>",
+    "translation": "<a href=\"source/src/loader.s\" download>파일 내려받기</a>"
+  },
+  {
+    "source": "Game linker configuration — src/speedway.cfg",
+    "translation": "게임 링커 설정 — src/speedway.cfg"
+  },
+  {
+    "source": "<a href=\"source/src/speedway.cfg\" download>Download this file</a>",
+    "translation": "<a href=\"source/src/speedway.cfg\" download>파일 내려받기</a>"
+  },
+  {
+    "source": "Loader linker configuration — src/loader.cfg",
+    "translation": "로더 링커 설정 — src/loader.cfg"
+  },
+  {
+    "source": "<a href=\"source/src/loader.cfg\" download>Download this file</a>",
+    "translation": "<a href=\"source/src/loader.cfg\" download>파일 내려받기</a>"
+  },
+  {
+    "source": "Graphics, HUD, and retained data",
+    "translation": "그래픽, HUD 및 보존 데이터"
+  },
+  {
+    "source": "These are the exact byte declarations used by the assembler. Screen holes, row terminators, and unused tails are retained.",
+    "translation": "어셈블러가 실제로 사용하는 바이트 선언을 그대로 수록했다. 화면의 미사용 구멍 영역, 행 종료 표시와 사용하지 않는 꼬리 데이터도 보존했다."
+  },
+  {
+    "source": "crash-sprites.inc",
+    "translation": "crash-sprites.inc"
+  },
+  {
+    "source": "<a href=\"source/src/crash-sprites.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/crash-sprites.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "hud-and-overlay.inc",
+    "translation": "hud-and-overlay.inc"
+  },
+  {
+    "source": "<a href=\"source/src/hud-and-overlay.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/hud-and-overlay.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "initial-screen.inc",
+    "translation": "initial-screen.inc"
+  },
+  {
+    "source": "<a href=\"source/src/initial-screen.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/initial-screen.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "player-sprites.inc",
+    "translation": "player-sprites.inc"
+  },
+  {
+    "source": "<a href=\"source/src/player-sprites.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/player-sprites.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "scenery.inc",
+    "translation": "scenery.inc"
+  },
+  {
+    "source": "<a href=\"source/src/scenery.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/scenery.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "screen-pages.inc",
+    "translation": "screen-pages.inc"
+  },
+  {
+    "source": "<a href=\"source/src/screen-pages.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/screen-pages.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "start-overlay.inc",
+    "translation": "start-overlay.inc"
+  },
+  {
+    "source": "<a href=\"source/src/start-overlay.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/start-overlay.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "traffic-sprites.inc",
+    "translation": "traffic-sprites.inc"
+  },
+  {
+    "source": "<a href=\"source/src/traffic-sprites.inc\" download>Download this include</a>",
+    "translation": "<a href=\"source/src/traffic-sprites.inc\" download>인클루드 파일 내려받기</a>"
+  },
+  {
+    "source": "Packaging and verification scripts",
+    "translation": "디스크 생성 및 검증 스크립트"
+  },
+  {
+    "source": "tools/package_disk.py",
+    "translation": "tools/package_disk.py"
+  },
+  {
+    "source": "tools/verify_build.py",
+    "translation": "tools/verify_build.py"
+  },
+  {
+    "source": "Applesoft startup",
+    "translation": "Applesoft 시작 프로그램"
+  },
+  {
+    "source": "This is the repaired loader generated by the build. Its DATA bytes come from <code>src/loader.s</code>; the editable template is <a href=\"source/src/speedway-run.bas.in\" download><code>speedway-run.bas.in</code></a>. The boot program is <a href=\"source/src/hello.bas\" download><code>HELLO</code></a>.",
+    "translation": "빌드 과정에서 생성한 수정판 로더다. DATA 바이트는 <code>src/loader.s</code>에서 가져오며, 편집할 템플릿은 <a href=\"source/src/speedway-run.bas.in\" download><code>speedway-run.bas.in</code></a>이다. 부팅 프로그램은 <a href=\"source/src/hello.bas\" download><code>HELLO</code></a>다."
+  },
+  {
+    "source": "Sources and editorial notes",
+    "translation": "출처와 편집에 관한 설명"
+  },
+  {
+    "source": "This is a revised English reading and programming edition of the December 1984 article, printed pages 88–97, based on the existing restoration. The original title, editorial credit, rules, GR explanation, two-listing workflow, and earlier Japanese attribution come from that source. The page replaces the long monitor-type-in presentation with a repaired, annotated ca65 reconstruction and a reproducible build.",
+    "translation": "이 글은 기존 복원 자료를 바탕으로 1984년 12월호 88–97쪽 기사를 다시 구성한 한국어 개정판이다. 원제, 편집부 크레디트, 게임 규칙, GR에 관한 설명, 두 개의 목록을 입력하는 방식과 일본 잡지에 대한 언급은 원 기사에서 가져왔다. 긴 모니터 입력 목록 대신 수정하고 주석을 붙인 ca65 소스와 재현 가능한 빌드 방법을 담았다."
+  },
+  {
+    "source": "The magazine image above is a crop from printed page 88. The two colour captures come from the repaired program running in MAME. Their vertical display scale is corrected in the page layout; the original PNG files are unchanged. Modern source comments, repair notes, memory labels, test results, and build instructions are editorial additions.",
+    "translation": "위의 잡지 사진은 원문 88쪽에서 잘라 낸 이미지다. 컬러 화면 두 장은 수정한 프로그램을 MAME에서 실행해 캡처했다. 페이지에서는 세로 표시 비율을 보정했으며 원본 PNG 파일은 바꾸지 않았다. 소스 주석, 수정 내역, 메모리 레이블, 시험 결과와 빌드 설명은 이번에 덧붙인 내용이다."
+  },
+  {
+    "source": "<a href=\"reference/original-article.txt\" hreflang=\"ko\">Original restored Korean article and listings</a> · <a href=\"images/title.png\">Raw title capture</a> · <a href=\"images/gameplay.png\">Raw gameplay capture</a>",
+    "translation": "<a href=\"reference/original-article.txt\" hreflang=\"ko\">복원한 한국어 원문과 프로그램 목록</a> · <a href=\"images/title.png\">타이틀 원본 캡처</a> · <a href=\"images/gameplay.png\">주행 화면 원본 캡처</a>"
+  },
+  {
+    "source": "The archive itself remains unchanged. This edition and its bundled files are confined to <code>tmp/docs/</code>.",
+    "translation": "원본 아카이브는 수정하지 않았다. 이 개정판과 첨부 파일은 <code>tmp/docs/</code> 안에만 두었다."
+  },
+  {
+    "source": "Crowded Speedway · December 1984 / revised 2026 · <a href=\"#top\">Back to the top</a>",
+    "translation": "크라우디드 스피드 웨이 · 1984년 12월 / 2026년 개정 · <a href=\"#top\">맨 위로</a>"
+  }
+]

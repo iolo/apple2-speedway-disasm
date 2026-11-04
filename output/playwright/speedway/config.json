@@ -1,0 +1,15 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "launchOptions": {
+      "executablePath": "/home/iolo/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+      "headless": true
+    },
+    "contextOptions": {
+      "viewport": {
+        "width": 1200,
+        "height": 1000
+      }
+    }
+  }
+}
